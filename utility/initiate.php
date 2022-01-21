@@ -116,4 +116,12 @@ $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`book` (
     ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
 $conn->query($sql);
 
+
+//--- 테이블 생성이 모두 완료 후 리소스 반납
+
+if ($conn != null) {
+    $conn->close();
+    echo "<script>alert('DBMS와 연결을 종료합니다.')</script>";
+}
+
 ?>
