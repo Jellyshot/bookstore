@@ -13,7 +13,7 @@
 </head>
 <body>
 <?php
-    require '/myWorkspace/bookstore/utility/nav.html';
+    require './utility/nav.html';
 ?>
     <div class="search">
         
