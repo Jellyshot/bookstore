@@ -44,20 +44,20 @@ $sql = "DROP TABLE IF EXISTS 'category'";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`category` (
-    `ctg_id` INT(8) NOT NULL AUTO_INCREMENT , 
+    `ctg_code` INT(8) NOT NULL AUTO_INCREMENT , 
     `ctg_name` VARCHAR(50) NOT NULL ,
-    PRIMARY KEY (`ctg_id`)
+    PRIMARY KEY (`ctg_code`)
     ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
 $conn->query($sql);
 
 
 
-//--book 테이블 생성
+//--publisher 테이블 생성
 $sql = "DROP TABLE IF EXISTS 'publisher'";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`publisher` (
-    `pbs_id` INT(8) NOT NULL AUTO_INCREMENT , 
+    `pbs_code` INT(8) NOT NULL AUTO_INCREMENT , 
     `pbs_name` VARCHAR(50) NOT NULL , 
     `pbs_charge` VARCHAR(20) NULL , 
     `pbs_phone` VARCHAR(13) NOT NULL , 
@@ -65,10 +65,11 @@ $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`publisher` (
     `pbs_address` VARCHAR(200) NULL , 
     `pbs_account` VARCHAR(20) NULL , 
     `pbs_pdate` DATE NOT NULL , 
-    PRIMARY KEY (`pbs_id`)
+    `pbs_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `pbs_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    PRIMARY KEY (`pbs_code`)
     ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
 $conn->query($sql);
-
 
 
 //-- author 테이블 생성
@@ -76,19 +77,14 @@ $sql = "DROP TABLE IF EXISTS 'author'";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`author` (
-    `aut_id` INT(8) NOT NULL AUTO_INCREMENT , 
-    `aut_name` VARCHAR(50) NOT NULL , 
-    `ctg_id` INT(8) NOT NULL , 
-    `aut_masterpiece` VARCHAR(50) NOT NULL , 
-    `aut_interview` VARCHAR(200) NULL , 
-    `aut_birth` DATE NOT NULL , 
+    `aut_code` INT(8) NOT NULL AUTO_INCREMENT ,
+    `aut_name` VARCHAR(50) NOT NULL ,
+    `aut_interview` VARCHAR(200) NULL ,
+    `aut_birth` DATE NULL , 
     `aut_upload` VARCHAR(200) NULL ,
-    PRIMARY KEY (`aut_id`),
-    FOREIGN KEY (`ctg_id`)
-    REFERENCES `category`(`ctg_id`) ON UPDATE CASCADE ON DELETE CASCADE
+    PRIMARY KEY (`aut_code`)
     ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
 $conn->query($sql);
-
 
 
 //-- book 테이블 생성
@@ -96,78 +92,62 @@ $sql = "DROP TABLE IF EXISTS 'book'";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`book` (
-    `book_id` INT(8) NOT NULL AUTO_INCREMENT , 
+    `book_code` INT(8) NOT NULL AUTO_INCREMENT , 
     `book_name` VARCHAR(20) NOT NULL , 
-    `ctg_id` INT(8) NOT NULL , 
-    `aut_id` INT(8) NOT NULL , 
-    `pbs_id` INT(8) NOT NULL ,
+    `ctg_code` INT(8) NOT NULL , 
+    `aut_code` INT(8) NOT NULL , 
+    `pbs_code` INT(8) NOT NULL ,
     `book_info` VARCHAR(200) NULL , 
-    `book_stock` INT(6) NOT NULL , 
-    `book_price` INT(8) NOT NULL ,
-    `book_pdate` DATE NOT NULL ,
+    `book_cost` INT NOT NULL , 
+    `book_price` INT NOT NULL ,
+    `book_pdate` DATE NULL ,
     `book_upload` VARCHAR(200) NULL ,
-    PRIMARY KEY (`book_id`),
-    FOREIGN KEY (`ctg_id`)
-    REFERENCES `category`(`ctg_id`) ON UPDATE CASCADE ON DELETE CASCADE ,
-    FOREIGN KEY (`aut_id`)
-    REFERENCES `author`(`aut_id`) ON UPDATE CASCADE ON DELETE CASCADE ,
-    FOREIGN KEY (`pbs_id`)
-    REFERENCES `publisher`(`pbs_id`) ON UPDATE CASCADE ON DELETE CASCADE
+    PRIMARY KEY (`book_code`),
+    FOREIGN KEY (`ctg_code`)
+    REFERENCES `category`(`ctg_code`) ON UPDATE CASCADE ON DELETE CASCADE ,
+    FOREIGN KEY (`aut_code`)
+    REFERENCES `author`(`aut_code`) ON UPDATE CASCADE ON DELETE CASCADE ,
+    FOREIGN KEY (`pbs_code`)
+    REFERENCES `publisher`(`pbs_code`) ON UPDATE CASCADE ON DELETE CASCADE
     ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
 $conn->query($sql);
-
-
-
-// -- admin 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'admin'";
-$conn->query($sql);
-
-$sql = "CREATE TABLE IF NOT EXISTS `admin` (
-    `adm_code` INT(8) NOT NULL AUTO_INCREMENT ,
-    `adm_id` VARCHAR(20) NOT NULL ,
-    `adm_pwd` VARCHAR(20) NOT NULL ,
-    PRIMARY KEY (`adm_code`) 
-    ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
-$conn->query($sql);
-
-
-
-// --notice 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'notice'";
-$conn->query($sql);
-
-$sql = "CREATE TABLE IF NOT EXISTS `notice`(
-    `ntc_id` INT(8) NOT NULL AUTO_INCREMENT ,
-    `ntc_subject` VARCHAR(50) NOT NULL ,
-    `ntc_contents` VARCHAR(2000) NOT NULL ,
-    `adm_code` INT(8) NOT NULL ,
-    `ntc_writetime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTEMP ,
-    `ntc_upload` VARCHAR(200) NULL
-    PRIMARY KEY (`ntc_id`) ,
-    FOREIGN KEY (`adm_code`) REFERENCES `admin` (`adm_code`) ON DELETE CACADE
-    )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
-$conn->query($sql);
-
 
 
 // --membership 테이블 생성
 $sql = "DROP TABLE IF EXISTS 'membership'";
 $conn->query($sql);
 
-$sql = "CREATE TABLE IF NOT EXISTS `mebership`(
-    `mem_code` INT(8) NOT NULL AUTO_INCREMENT ,
-    `mem_id` VARCHAR(20) NOT NULL UIQUE,
+$sql = "CREATE TABLE IF NOT EXISTS membership (
+    `mem_id` VARCHAR(20) NOT NULL ,
     `mem_pwd` VARCHAR(20) NOT NULL ,
     `mem_name` VARCHAR(24) NOT NULL ,
     `mem_address` VARCHAR(200) NULL ,
     `mem_phone` VARCHAR(13) NOT NULL ,
     `mem_email` VARCHAR(50) NULL ,
-    `mem_joindate` DATETIME NOT NULL 
-    `mem_profile` VARCHAR(200) NULL
-    PRIMARY KEY (`mem_cod`) 
+    `mem_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `mem_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `mem_profile` VARCHAR(200) NULL ,
+    PRIMARY KEY (`mem_id`) 
     )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
 $conn->query($sql);
 
+
+// --notice 테이블 생성
+$sql = "DROP TABLE IF EXISTS 'notice'";
+$conn->query($sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS notice(
+    `ntc_code` INT(8) NOT NULL AUTO_INCREMENT , 
+    `ntc_subject` VARCHAR(20) NOT NULL ,
+    `ntc_contents` TEXT NOT NULL ,
+    `mem_id` VARCHAR(20) NOT NULL ,
+    `ntc_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `ntc_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `ntc_upload` VARCHAR(200) NULL ,
+    PRIMARY KEY (`ntc_code`) ,
+    FOREIGN KEY(`mem_id`) REFERENCES `membership`(`mem_id`) ON DELETE CASCADE
+    )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
+$conn->query($sql);
 
 
 // -- messege 테이블 생성
@@ -175,18 +155,102 @@ $sql = "DROP TABLE IF EXISTS 'messege'";
 $conn->query($sql);
 
 $sql="CREATE TABLE IF NOT EXISTS `messege`(
-    `msg_id` INT(8) NOT NULL AUTO_INCREMENT ,
-    `sent_mem_code` INT(8) NOT NULL ,
-    `rec_mem_code` INT(8) NOT NULL ,
+    `msg_code` INT(8) NOT NULL AUTO_INCREMENT ,
+    `sent_mem_id` VARCHAR(20) NOT NULL ,
+    `rec_mem_id` VARCHAR(20) NOT NULL ,
     `msg_sentdate` DATETIME NOT NULL ,
-    `msg_subject` VARCHAR(20) NOT NULL ,
+    `mem_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     `msg_contents` VARCHAR(200) NOT NULL ,
-    PRIMARY KEY (`msg_id`) ,
-    FOREIGN KEY (`sent_mem_code`) REFERENCES `membership` (`mem_code`) ON DELETE CASCADE ,
-    FOREIGN KEY (`rec_mem_code`) REFERENCES `membership` (`mem_code`) ON DELETE CASCADE 
-)ENGINE = InnoDB CAHRSET=utf8 COLLATE utf9_general_ci";
+    PRIMARY KEY (`msg_code`) ,
+    FOREIGN KEY (`sent_mem_id`) REFERENCES `membership` (`mem_id`) ON DELETE CASCADE ,
+    FOREIGN KEY (`rec_mem_id`) REFERENCES `membership` (`mem_id`) ON DELETE CASCADE 
+)ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
 $conn->query($sql);
 
+
+// -- board 테이블 생성
+$sql = "DROP TABLE IF EXISTS board";
+$conn->query($sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS board(
+    `bd_code` INT(8) NOT NULL AUTO_INCREMENT,
+    `mem_id` VARCHAR(20) NOT NULL ,
+    `bd_subject` VARCHAR(50) NOT NULL ,
+    `bd_contents` VARCHAR(2000) NOT NULL ,
+    `bd_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `bd_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `bd_upload` VARCHAR(200) NULL ,
+    PRIMARY KEY (`bd_code`) ,
+    FOREIGN KEY(`mem_id`) REFERENCES `membership`(`mem_id`) ON DELETE CASCADE
+    )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
+$conn->query($sql);
+
+
+//  ---------------------  주문관련 테이블 생성 --------------------
+// cartmain
+$sql = "DROP TABLE IF EXISTS cartmain";
+$conn->query($sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS cartmain(
+    `cm_code` INT(8) NOT NULL AUTO_INCREMENT ,
+    `mem_id` VARCHAR(20) NOT NULL ,
+    `cm_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `cm_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    PRIMARY KEY (`cm_code`) ,
+    FOREIGN KEY(`mem_id`) REFERENCES `membership`(`mem_id`) ON DELETE CASCADE
+    )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
+$conn->query($sql);
+
+// cartsub
+$sql = "DROP TABLE IF EXISTS cartsub";
+$conn->query($sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS cartsub(
+    `cs_code` INT(8) NOT NULL AUTO_INCREMENT ,
+    `cm_code` INT(8) NOT NULL ,
+    `book_code` INT(8) NOT NULL ,
+    `cs_cnt` INT(4) NOT NULL ,
+    `cs_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `cs_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    PRIMARY KEY (`cs_code`) ,
+    FOREIGN KEY(`cm_code`) REFERENCES `cartmain`(`cm_code`) ON DELETE CASCADE ,
+    FOREIGN KEY(`book_code`) REFERENCES `book`(`book_code`) ON DELETE CASCADE
+    )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
+$conn->query($sql);
+
+
+
+// ordermain
+$sql = "DROP TABLE IF EXISTS ordermain";
+$conn->query($sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS ordermain(
+    `om_code` INT(8) NOT NULL AUTO_INCREMENT ,
+    `mem_id` VARCHAR(20) NOT NULL ,
+    `om_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `om_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    PRIMARY KEY (`om_code`) ,
+    FOREIGN KEY(`mem_id`) REFERENCES `membership`(`mem_id`) ON DELETE CASCADE
+    )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
+$conn->query($sql);
+
+
+// ordersub
+$sql = "DROP TABLE IF EXISTS ordersub";
+$conn->query($sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS ordersub(
+    `os_code` INT(8) NOT NULL AUTO_INCREMENT ,
+    `om_code` INT(8) NOT NULL ,
+    `book_code` INT(8) NOT NULL ,
+    `os_cnt` INT(4) NOT NULL ,
+    `os_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `os_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    PRIMARY KEY (`os_code`) ,
+    FOREIGN KEY(`om_code`) REFERENCES `ordermain`(`om_code`) ON DELETE CASCADE ,
+    FOREIGN KEY(`book_code`) REFERENCES `book`(`book_code`) ON DELETE CASCADE
+    )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";
+$conn->query($sql);
 
 
 
