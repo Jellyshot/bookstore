@@ -1,7 +1,8 @@
 # bookstore
 
 ## 목적: mySQL 및 PHP CRUD를 활용하여 책을 주제로 웹 만들기
-
+<hr>
+<br>
 
 ### 구현 기능 - 1. 일반회원
 #### 1. 도서 검색
@@ -16,18 +17,25 @@
 #### 3. 작가 정보 관리
 #### 4. 구매 접수 내역 관리
 
+<br>
+
 ### 작업순서
 #### 1. view 페이지 Figma툴 이용 prototype 제작 
 #### 2. prototype에 따른 테이블 구조 e-r diagram화 
 #### 3. 페이지 제작 및 단계별 기능 작동 확인
+<br>
 
+---
 
---- 2022-01-26 ---
+--- 2022-01-26 --- <br>
 DB 및 테이블 생성.
-index 페이지 제작.
+index 페이지 제작. 
+<br>
 
---- 2022-01-27 ---
-로그인 및 회원가입 구현. (아이디 중복체크 js 오류로 보류중)
+--- 2022-01-27 --- <br>
+로그인 및 회원가입 구현. (아이디 중복체크 js 오류로 보류중🤢)
+<br>
 
---- 2022-01-28 ---
-author, publisher, book 테이블 데이터 csv로 제작. book table은 foreign key로 업데이트 오류. 
+--- 2022-01-28 --- <br>
+author, publisher, book 테이블 데이터 csv로 제작 및 import. book table은 foreign key 업데이트 오류중..😂 
+<br>
