@@ -1,4 +1,5 @@
 <?php
+require './utility.php';
 // db연결
 $conn= new mysqli('localhost', 'root', '');
 
@@ -17,20 +18,20 @@ $sql = "CREATE DATABASE IF NOT EXISTS ".$dbname;
 $conn->query($sql);
 
 //사용자 계정 생성
-$account = $dbname;
-$sql = "DROP USER IF EXISTS ".$account;
-$conn->query($sql);
+// $account = $dbname;
+// $sql = "DROP USER IF EXISTS ".$account;
+// $conn->query($sql);
 
-$sql = "CREATE USER IF NOT EXISTS ".$account."'@'%' IDENTIFIED BY '".$account."'";
-$conn->query($sql);
+// $sql = "CREATE USER IF NOT EXISTS ".$account."'@'%' IDENTIFIED BY '".$account."'";
+// $conn->query($sql);
 
-//계정의 리소스 제한
-$sql = "GRANT USAGE ON *.* TO '".$account."'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTION 0";
-$conn->query($sql);
+// //계정의 리소스 제한
+// $sql = "GRANT USAGE ON *.* TO '".$account."'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTION 0";
+// $conn->query($sql);
 
-//계정에 모든 권한 부여
-$sql = "GRANT ALL PRIVILEGES ON `".$dbname."`.* TO '".$account."'@'%'";
-$conn->query($sql);
+// //계정에 모든 권한 부여
+// $sql = "GRANT ALL PRIVILEGES ON `".$dbname."`.* TO '".$account."'@'%'";
+// $conn->query($sql);
 
 //명시적으로 현재사용 DB 선언
 $sql = "use ". $dbname;
@@ -40,7 +41,7 @@ $conn->query($sql);
 
 
 //--category 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'category'";
+$sql = "DROP TABLE IF EXISTS category";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`category` (
@@ -53,7 +54,7 @@ $conn->query($sql);
 
 
 //--publisher 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'publisher'";
+$sql = "DROP TABLE IF EXISTS publisher";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`publisher` (
@@ -64,7 +65,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`publisher` (
     `pbs_email` VARCHAR(50) NOT NULL , 
     `pbs_address` VARCHAR(200) NULL , 
     `pbs_account` VARCHAR(20) NULL , 
-    `pbs_pdate` DATE NOT NULL , 
+    `pbs_pdate` VARCHAR(10) NOT NULL , 
     `pbs_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     `pbs_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     PRIMARY KEY (`pbs_code`)
@@ -73,7 +74,7 @@ $conn->query($sql);
 
 
 //-- author 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'author'";
+$sql = "DROP TABLE IF EXISTS author";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`author` (
@@ -88,7 +89,7 @@ $conn->query($sql);
 
 
 //-- book 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'book'";
+$sql = "DROP TABLE IF EXISTS book";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`book` (
@@ -114,7 +115,7 @@ $conn->query($sql);
 
 
 // --membership 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'membership'";
+$sql = "DROP TABLE IF EXISTS membership";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS membership (
@@ -133,7 +134,7 @@ $conn->query($sql);
 
 
 // --notice 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'notice'";
+$sql = "DROP TABLE IF EXISTS notice";
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS notice(
@@ -151,7 +152,7 @@ $conn->query($sql);
 
 
 // -- messege 테이블 생성
-$sql = "DROP TABLE IF EXISTS 'messege'";
+$sql = "DROP TABLE IF EXISTS messege";
 $conn->query($sql);
 
 $sql="CREATE TABLE IF NOT EXISTS `messege`(
