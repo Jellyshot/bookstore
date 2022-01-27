@@ -37,5 +37,5 @@ index 페이지 제작.
 <br>
 
 --- 2022-01-28 --- <br>
-author, publisher, book 테이블 import 데이터 csv 제작. book table은 foreign key 업데이트 오류중..😂 
+author, publisher, book 테이블 import csv 데이터 제작. book table은 foreign key 업데이트 오류중..😂 
 <br>
