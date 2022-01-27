@@ -119,7 +119,7 @@ $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS membership (
     `mem_id` VARCHAR(20) NOT NULL ,
-    `mem_pwd` VARCHAR(20) NOT NULL ,
+    `mem_pwd` VARCHAR(500) NOT NULL ,
     `mem_name` VARCHAR(24) NOT NULL ,
     `mem_address` VARCHAR(200) NULL ,
     `mem_phone` VARCHAR(13) NOT NULL ,
@@ -253,12 +253,9 @@ $sql = "CREATE TABLE IF NOT EXISTS ordersub(
 $conn->query($sql);
 
 
-
 //--- 테이블 생성이 모두 완료 후 리소스 반납
-
 if ($conn != null) {
     $conn->close();
-    echo "<script>alert('DBMS와 연결을 종료합니다.')</script>";
+    echo outmsg(DBMS_EXIT);
 }
-
 ?>

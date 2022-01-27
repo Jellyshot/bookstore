@@ -90,18 +90,22 @@ header a:hover, .drop_menu:hover button{
     display: block;
 }
 
-/* index.php style 적용 시작*/
+
+
+/* --------  index.php style ------------------ 적용 시작*/
 
 .search-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    height: 90vh;
-    display: flex;
 }
 
 .search-container .search_box{
     border: 3px solid var(--shadow-color-);
     margin: auto;
-    width: 40%;
+    width: 50%;
 }
 .search-container input[type=text] {
     padding: 6px;
@@ -126,7 +130,7 @@ header a:hover, .drop_menu:hover button{
     background: var(--shadow-color-);
 }
 
-.search_box input:focus{
+input:focus{
     outline: none;
 }
 
@@ -150,9 +154,65 @@ header a:hover, .drop_menu:hover button{
 .custom-shape-divider-bottom-1643186456 .shape-fill {
     fill: var(--main-color-);
 }
-/* 미디어 스크린 시작 */
 
-@media screen and (max-width:600px){
+/* ------------------로그인 페이지-------------------- */
+
+.login_container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    text-align: center;
+}
+.login_container input{
+    width: 100%;
+    font-size: 17px;
+    padding: 10px;
+    margin: 3px auto;
+}
+
+.login_container input[type=submit] {
+    background-color: var(--shadow-color-);
+    color: whitesmoke;
+    border: none;
+    
+}
+.login_container input[type=submit]:hover{
+    background-color: var(--main-color-);
+}
+
+/* ----------------- 회원가입 ----------------------- */
+
+.r_container{
+    width: 50%;
+    margin: auto;
+    padding-top: 50px;
+}
+.r_info input:not(:nth-child(2)){
+    width: 100%;
+    font-size: 17px;
+    padding: 10px;
+    margin: 5px auto;
+}
+
+.r_button{
+    text-align: center;
+}
+.r_button input{
+    width: 24vh;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* ---------------------------- 미디어 스크린 시작 -------------------------------- */
+@media screen and (max-width:1020px) {
+    .r_button input{
+        width: 100%;
+    }  
+}
+
+@media screen and (max-width:690px){
     /* 미디어 사이즈에 맞추어 아이콘 정렬 */
     header a:not(.active), header button{
         display: none;
@@ -185,18 +245,6 @@ header a:hover, .drop_menu:hover button{
         text-align: left;
     }
 
-    /* search-container */
-    .topnav .search-container {
-        float: none;
-    }
-    .topnav a, .topnav input[type=text], .topnav .search-container button {
-        float: none;
-        display: block;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-        padding: 14px;
-    }
     .search-container input[type=text] {
         width: 60%;
         font-size: 14px;
@@ -214,4 +262,9 @@ header a:hover, .drop_menu:hover button{
         border: none;
         cursor: pointer;
     }
+    .r_container{
+        width: 80%;
+        padding-top: 50px;
+    }
 }
+
