@@ -39,3 +39,7 @@ index 페이지 제작.
 --- 2022-01-28 --- <br>
 author, publisher, book 테이블 import csv 데이터 제작. book table은 foreign key 업데이트 오류중..😂 
 <br>
++
+회원정보 수정 및 로그인 성공시 이동되는 mypage.php 구현. <br>
+회원정보 수정 시 비밀번호 체크를 위하여 비밀번호 수정은 따로 빼서 처리함.
+현재 창 넘어가는데 모달 처리 가능하면 .... 그게 나을듯....?
