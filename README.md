@@ -1,7 +1,6 @@
 # bookstore
 
 ## 1. 목적: mySQL 및 PHP CRUD를 활용하여 책을 주제로 웹 만들기
-<hr>
 <br>
 
 ### 2. 구현 기능 
