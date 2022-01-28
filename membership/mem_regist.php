@@ -3,7 +3,7 @@
     require '../utility/nav.php';
 ?>
 
-
+    <h1>회원가입</h1>
     <form action="mem_registProcess.php" method="POST" enctype="multipart/form-data" class = "r_container">
         <div class="r_info">
             <!-- id 중복확인을 하기 위한 button에 checkid function 추가 -->

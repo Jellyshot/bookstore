@@ -3,7 +3,7 @@
     require './utility/nav.php';
 ?>
 <div class="search-container">
-    <form action="search_result.php" method="POST" class="search_box">
+    <form action="./book/book_searchResult.php" method="POST" class="search_box">
         <input type="text" placeholder="검색어를 입력하세요" name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>

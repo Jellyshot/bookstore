@@ -22,7 +22,7 @@ $row = mysqli_fetch_array($result);
 if (!empty($row['mem_id'])) {
     $_SESSION['mem_id'] = $mem_id;
     $conn->close();
-    header('Location: ../index.php');
+    header('Location: ../mypage.php?id='.$mem_id);
 }
     // 계정이 확인되지 않을 경우 홈화면으로 돌려준다.
 else { ?>

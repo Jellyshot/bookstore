@@ -19,8 +19,8 @@
     <div class="header_left">
     <a class=active href="../index.php">A-book's</a>
     <a href="./notice/notice_list.php">공지사항</a>
-    <a href="">도서추천</a>
-    <a href="">자유게시판</a>
+    <a href="../book/recommend.php">도서추천</a>
+    <a href="../board/bd_list.php">자유게시판</a>
     </div>
     <div class="header_right">
 <?php
@@ -29,18 +29,18 @@ if($chk_login) {
     switch ($_SESSION['mem_id']) {
         case 'admin':
     ?>
-            <a href="">관리자모드</a>
+            <a href="../manage/admin.php">관리자모드</a>
             <a href="/membership/mem_logout.php">로그아웃</a>
     <?php
             break;
         default:
     ?>
             <div class="drop_menu">
-            <button>마이페이지<i class="fa fa-caret-down"></i></button>
+            <button>회원메뉴<i class="fa fa-caret-down"></i></button>
             <div class="column">
-                <a href="">쪽지함</a>
-                <a href="">회원정보수정</a>
-                <a href="">구매내역</a>
+                <a href="../messege/msg_list.php">쪽지함</a>
+                <a href="../membership/mem_update.php?id=<?= $_SESSION['mem_id']?>">회원정보수정</a>
+                <a href="../order/od_list.php">구매내역</a>
             </div>
             </div>
             <a href="/membership/mem_logout.php">로그아웃</a>

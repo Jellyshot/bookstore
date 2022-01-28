@@ -3,7 +3,9 @@
 // 1. DB연결
     require '../utility/dbconfig.php';
     require '../utility/nav.php';
-if(isset($_POST['mem_id']) && $_POST['mem_id']!=''){
+    
+    if(isset($_POST['mem_id']) && $_POST['mem_id']!=''){
+        
 // 2. 변수설정
     $mem_id = $_POST['mem_id'];
     $mem_pwd = $_POST['mem_pwd'];
