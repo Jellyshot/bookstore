@@ -10,8 +10,6 @@ $mem_id = $_REQUEST['mem_id'];
 $mem_pwd = $_REQUEST['mem_pwd'];
 
 // 4. 사용자 계정 존재 여부 확인 후 결과값을 $row에 저장시키기
-
-// ----- 비밀번호 암호화 회원가입 처리 후 필요!!! -----
 $stmt = $conn->prepare("SELECT * FROM membership WHERE mem_id = ? and mem_pwd = sha2(?,256)");
 $stmt->bind_param("ss", $mem_id, $mem_pwd);
 $stmt->execute();
@@ -22,7 +20,7 @@ $row = mysqli_fetch_array($result);
 if (!empty($row['mem_id'])) {
     $_SESSION['mem_id'] = $mem_id;
     $conn->close();
-    header('Location: ../mypage.php?id='.$mem_id);
+    header('Location: ./mypage.php?id='.$mem_id);
 }
     // 계정이 확인되지 않을 경우 홈화면으로 돌려준다.
 else { ?>

@@ -18,7 +18,7 @@
 <header class="header" id="header">
     <div class="header_left">
     <a class=active href="../index.php">A-book's</a>
-    <a href="./notice/notice_list.php">공지사항</a>
+    <a href="../notice/ntc_list.php">공지사항</a>
     <a href="../book/recommend.php">도서추천</a>
     <a href="../board/bd_list.php">자유게시판</a>
     </div>

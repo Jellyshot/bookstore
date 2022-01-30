@@ -5,7 +5,7 @@ require "../utility/utility.php";
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bookstore";
+$dbname = "bookweb";
 
 $conn = new mysqli($hostname, $username, $password, $dbname);
 

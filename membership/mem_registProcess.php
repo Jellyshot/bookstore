@@ -37,7 +37,7 @@
             $sql->execute();
             }else{
             // 업로드할 파일이 없을 때의 insert 구문 작성
-            $sql = $conn->prepare("INSERT INTO membership(mem_id, mem_pwd, mem_name, mem_address, mem_phone, mem_email) VALUES (?, ?, ?, ?, ?, ?)");
+            $sql = $conn->prepare("INSERT INTO membership(mem_id, mem_pwd, mem_name, mem_address, mem_phone, mem_email) VALUES (?, sha2(?,256), ?, ?, ?, ?)");
             $sql->bind_param("ssssss",$mem_id, $mem_pwd, $mem_name, $mem_address, $mem_phone, $mem_email);
             $sql->execute();
             }

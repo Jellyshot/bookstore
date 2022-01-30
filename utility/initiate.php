@@ -10,14 +10,14 @@ if(!$conn->connect_error){
 }
 
 // create DB
-$dbname = 'bookstore';
+$dbname = 'bookweb';
 $sql = "DROP DATABASE IF EXISTS ".$dbname;
 $conn->query($sql);
 
 $sql = "CREATE DATABASE IF NOT EXISTS ".$dbname;
 $conn->query($sql);
 
-//사용자 계정 생성
+// 사용자 계정 생성
 // $account = $dbname;
 // $sql = "DROP USER IF EXISTS ".$account;
 // $conn->query($sql);
@@ -44,7 +44,7 @@ $conn->query($sql);
 $sql = "DROP TABLE IF EXISTS category";
 $conn->query($sql);
 
-$sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`category` (
+$sql = "CREATE TABLE IF NOT EXISTS category (
     `ctg_code` INT(8) NOT NULL AUTO_INCREMENT , 
     `ctg_name` VARCHAR(50) NOT NULL ,
     PRIMARY KEY (`ctg_code`)
@@ -57,7 +57,7 @@ $conn->query($sql);
 $sql = "DROP TABLE IF EXISTS publisher";
 $conn->query($sql);
 
-$sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`publisher` (
+$sql = "CREATE TABLE IF NOT EXISTS publisher (
     `pbs_code` INT(8) NOT NULL AUTO_INCREMENT , 
     `pbs_name` VARCHAR(50) NOT NULL , 
     `pbs_charge` VARCHAR(20) NULL , 
@@ -77,7 +77,7 @@ $conn->query($sql);
 $sql = "DROP TABLE IF EXISTS author";
 $conn->query($sql);
 
-$sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`author` (
+$sql = "CREATE TABLE IF NOT EXISTS author (
     `aut_code` INT(8) NOT NULL AUTO_INCREMENT ,
     `aut_name` VARCHAR(50) NOT NULL ,
     `aut_interview` VARCHAR(200) NULL ,
@@ -92,7 +92,7 @@ $conn->query($sql);
 $sql = "DROP TABLE IF EXISTS book";
 $conn->query($sql);
 
-$sql = "CREATE TABLE IF NOT EXISTS `".$dbname."`.`book` (
+$sql = "CREATE TABLE IF NOT EXISTS book (
     `book_code` INT(8) NOT NULL AUTO_INCREMENT , 
     `book_name` VARCHAR(20) NOT NULL , 
     `ctg_code` INT(8) NOT NULL , 

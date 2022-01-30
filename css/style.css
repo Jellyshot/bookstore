@@ -21,6 +21,7 @@
 header{
     overflow: hidden;
     background-color: var(--main-color-);
+    box-shadow: 0px 5px 8px var(--deep-color-);
 }
 
 /* 메뉴가 들어있는 a태그들을 일렬로 세움 */
@@ -106,6 +107,7 @@ header a:hover, .drop_menu:hover button{
     border: 3px solid var(--shadow-color-);
     margin: auto;
     width: 50%;
+    box-shadow: 3px 3px 8px var(--deep-color-);
 }
 .search-container input[type=text] {
     padding: 6px;
@@ -115,10 +117,11 @@ header a:hover, .drop_menu:hover button{
     width: 80%;
 }
 
-.search-container button { 
+.search-container input[type=submit] { 
+    font-family: FontAwesome;
     float: right;
     margin: 3px;
-    padding: 6px 10px;
+    padding: 10px;
     color: whitesmoke;
     background: var(--main-color-);
     font-size: 17px;
@@ -126,14 +129,20 @@ header a:hover, .drop_menu:hover button{
     cursor: pointer;
 }
 
-.search-container button:hover {
+.search-container input[type=submit]:hover {
     background: var(--shadow-color-);
 }
 
-input:focus{
+.search-container select{
+    border: none;
+    padding: 3px 5px;
+    color: var(--black-color-);
+    font-size: 17px;
+}
+select, input:focus{
     outline: none;
 }
-
+/* index 배경화면 */
 .custom-shape-divider-bottom-1643186456 {
     position: absolute;
     bottom: 0;
