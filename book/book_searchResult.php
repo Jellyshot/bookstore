@@ -60,6 +60,18 @@
     // ***** 이거 있으면 굳이 위에서 pagination을 위한 카운트 sql구문 안해도 되는거 아닐까?
     
 ?> 
+<div class="result_search">
+    <form action="./book/book_searchResult.php" method="POST" class="search_box">
+        <select name="s_ctg">
+            <option value="book_name">책이름</option>
+            <option value="aut_name">작가명</option>
+            <option value="pbs_name">출판사명</option>
+        </select>
+        <input type="text" placeholder="검색어를 입력하세요" name="search">
+        <input type="submit" value="&#xf002;"/>
+    </form>
+</div>
+
         <h1><?= $search ?>로 검색한 결과</h1>
         <h3 style="text-align:center;">&#91;검색된 결과 : 총 <?= $total_recods ?> 개&#93;</h3><br>
         
@@ -84,7 +96,7 @@
     //  ***** 위에 num_rows $row에 저장해놓고 num_rows를 다시하는 이유는?
             while($row = $resultset->fetch_array()){
 ?>
-                <tr><a href="./book_searchResult.php?book_code=<?= $row['book_code'] ?>">
+                <tr><a href="./book_datailview.php?book_code=<?= $row['book_code'] ?>">
                     <td><?= $row['book_upload'] ?></td>
                     <td><?= $row['book_code'] ?></td>
                     <td><?= $row['book_name'] ?></td>
@@ -116,3 +128,5 @@
         echo "검색 결과가 없습니다";
     }
 ?>
+</body>
+</html>

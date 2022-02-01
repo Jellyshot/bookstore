@@ -28,20 +28,25 @@ require_once '../utility/loginchk.php';
     // 2.5. 페이지네이션의 첫페이지, 마지막 페이지 설정
         // 2.5.2. 페이지네이션 길이 지정
         $pagination_lengh = 10;
-        
+        $start_page = floor(($page_no-1)/$pagination_lengh)*$pagination_lengh + 1;
+        $end_page = $start_page + ($pagination_lengh-1);
+            if ($end_page > $total_pages) {
+                $end_page = $total_pages;
+            }
 ?>
 
 <div class="notice_top">
-<h1>공지사항</h1>
-<!-- 관리자로 로그인시에만 보일 버튼 -->
+    <h1>공지사항</h1>
+    <!-- 관리자로 로그인시에만 보일 버튼 -->
 <?php 
-if ($_SESSION['m_id'] == 'admin') {
+    if ($_SESSION['m_id'] == 'admin') {
 ?>
-    <button><a href="./noticeWrite.php">글쓰기</a></button>
+        <a href="./ntc_write.php">글쓰기</a>
+        <a href="./ntc_write100.php">100개쓰기</a>
 <?php
-}   $sql = "SELECT * FROM notice Limit $offset, $recods_per_page";
+    }  
+    $sql = "SELECT * FROM notice Limit $offset, $recods_per_page";
     $resultset = $conn->query();
-    
 ?>
 </div>
 <div class="notice_bottom">
@@ -53,11 +58,34 @@ if ($_SESSION['m_id'] == 'admin') {
     </tr>
 
     <!-- 쿼리구문 실행 -->
+<?php
+    if($resultset->num_rows >0){
+        while($row = $resultset->fetch_array()){    
+?>
     <tr>
-        <td><?= ?></td>
-        <td><?= ?></td>
-        <td><?= ?></td>
-    </tr>
+    <td><?= $row['ntc_code'] ?></td>
+    <td><a href="./ntc_detailview.php?ntc_code=<?= $row['ntc_code']?>"><?= $row['ntc_subject']?></a></td>
+    <td><?= $row['ntc_rdate']?></td>
+    <tr>
+<?php
+        }
+?>
 </table>
+<?php
+    // 페이지네이션 버튼
+    if($page_no >1){
+        echo "<a href='book_searchResult.php?page_no=1'>First</a>";
+    }
+    for($count = $start_page; $count <= $end_page; $count++){
+        echo "<a href='book_searchResult.php?page_no=".$count."'>".$count."</a>";
+    }
+    if($page_no < $total_pages) {
+        echo "<a href = 'book_searchResult.php?page_no=".$total_pages."'>Last</a>";
+    }
+}else{
+    echo "등록된 공지사항이 없습니다";
+}
+?>
 </div>
-    
+</body>
+</html>
