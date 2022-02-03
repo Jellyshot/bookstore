@@ -18,20 +18,20 @@ $sql = "CREATE DATABASE IF NOT EXISTS ".$dbname;
 $conn->query($sql);
 
 // 사용자 계정 생성
-// $account = $dbname;
-// $sql = "DROP USER IF EXISTS ".$account;
-// $conn->query($sql);
+$account = $dbname;
+$sql = "DROP USER IF EXISTS ".$account;
+$conn->query($sql);
 
-// $sql = "CREATE USER IF NOT EXISTS ".$account."'@'%' IDENTIFIED BY '".$account."'";
-// $conn->query($sql);
+$sql = "CREATE USER IF NOT EXISTS ".$account."'@'%' IDENTIFIED BY '".$account."'";
+$conn->query($sql);
 
 // //계정의 리소스 제한
-// $sql = "GRANT USAGE ON *.* TO '".$account."'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTION 0";
-// $conn->query($sql);
+$sql = "GRANT USAGE ON *.* TO '".$account."'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTION 0";
+$conn->query($sql);
 
 // //계정에 모든 권한 부여
-// $sql = "GRANT ALL PRIVILEGES ON `".$dbname."`.* TO '".$account."'@'%'";
-// $conn->query($sql);
+$sql = "GRANT ALL PRIVILEGES ON `".$dbname."`.* TO '".$account."'@'%'";
+$conn->query($sql);
 
 //명시적으로 현재사용 DB 선언
 $sql = "use ". $dbname;

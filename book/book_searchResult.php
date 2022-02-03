@@ -7,8 +7,8 @@
 
 // 2. 변수 설정
 //  2.1 값 받아오기
-    $search = $_POST['search'];
-    $category = $_POST['s_ctg'];
+    $search = $_GET['search'];
+    $category = $_GET['s_ctg'];
 
 //  2.2 페이지네이션용 변수
 //  2.2.1 페이지 번호 설정
@@ -28,9 +28,13 @@
     // INNER JOIN author AS a ON b.aut_code = a.aut_code
     // INNER JOIN publisher AS p ON b.pbs_code = p.pbs_code
     // INNER JOIN category AS c ON b.ctg_code = c.ctg_code
-    // WHERE ".$category. "like '%".$search."%'";
+    // WHERE ".$category. " like '%".$search."%'";
     
-    $sql = "SELECT count(*) As total_recods FROM book AS b INNER JOIN author AS a ON b.aut_code = a.aut_code INNER JOIN publisher AS p ON b.pbs_code = p.pbs_code INNER JOIN category AS c ON b.ctg_code = c.ctg_code WHERE ".$category." like '%".$search."%'";
+    $sql = "SELECT count(*) As total_recods FROM book AS b 
+    INNER JOIN author AS a ON b.aut_code = a.aut_code 
+    INNER JOIN publisher AS p ON b.pbs_code = p.pbs_code 
+    INNER JOIN category AS c ON b.ctg_code = c.ctg_code 
+    WHERE ".$category." like '%".$search."%'";
     $result = $conn->query($sql);
     $total_recods = $result->fetch_array();
     $total_recods = $total_recods['total_recods'];
@@ -54,13 +58,16 @@
     INNER JOIN author AS a ON b.aut_code = a.aut_code
     INNER JOIN publisher AS p ON b.pbs_code = p.pbs_code
     INNER JOIN category AS c ON b.ctg_code = c.ctg_code
-    WHERE $category like '%$search%';";
+    WHERE ".$category. " like '%".$search."%'";
+    // WHERE $category like '%$search%';";
+    // 이 쿼리 집에서는 됬는데 왜 학원에서는 또 안됨 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
     $resultset = $conn->query($sql);
-    $row = mysqli_num_rows($resultset)
+    // $row = mysqli_num_rows($resultset)
     // ***** 이거 있으면 굳이 위에서 pagination을 위한 카운트 sql구문 안해도 되는거 아닐까?
+    // select count가 num->row보다 리소스를 적게 먹음! 따라서 sql구문 두번 작성해주는게 나음!
     
 ?> 
-<div class="result_search">
+<div class="search_result_container">
     <form action="./book/book_searchResult.php" method="POST" class="search_box">
         <select name="s_ctg">
             <option value="book_name">책이름</option>
@@ -68,11 +75,11 @@
             <option value="pbs_name">출판사명</option>
         </select>
         <input type="text" placeholder="검색어를 입력하세요" name="search">
-        <input type="submit" value="&#xf002;"/>
+        <input type="submit" value="&#xf002;"/><br>
     </form>
 </div>
-
-        <h1><?= $search ?>로 검색한 결과</h1>
+<div class="result_table">
+        <h1 style="text-align: center;"><?= $search ?>(으)로 검색한 결과</h1>
         <h3 style="text-align:center;">&#91;검색된 결과 : 총 <?= $total_recods ?> 개&#93;</h3><br>
         
         <table>
@@ -92,26 +99,28 @@
             <tbody>
 <?php
     
-    if ($resultset->num_rows >0) {
+    if ($resultset->num_rows > 0) {
     //  ***** 위에 num_rows $row에 저장해놓고 num_rows를 다시하는 이유는?
             while($row = $resultset->fetch_array()){
 ?>
-                <tr><a href="./book_datailview.php?book_code=<?= $row['book_code'] ?>">
+                <tr>
                     <td><?= $row['book_upload'] ?></td>
                     <td><?= $row['book_code'] ?></td>
-                    <td><?= $row['book_name'] ?></td>
+                    <td><a href="./book_detailview.php?book_code=<?= $row['book_code'] ?>"><?= $row['book_name'] ?></a></td>
                     <td><?= $row['ctg_name'] ?></td>
                     <td><?= $row['aut_name'] ?></td>
                     <td><?= $row['pbs_name'] ?></td>
                     <td><?= $row['book_info'] ?></td>
                     <td><?= $row['book_price'] ?></td>
                     <td><?= $row['book_pdate'] ?></td>
-                </a></tr>
+                </tr>
 <?php
             }
 ?>
             </tbody>
         </table>
+</div>
+<div class="pagination">
 <?php
 //  4. Pagination 버튼 만들기
         if($page_no >1){
@@ -125,8 +134,10 @@
         }
     
 }else{
-        echo "검색 결과가 없습니다";
+        echo '<div class="no_result">검색 결과가 없습니다</div>';
+        // 이게 왜 위치를 못잡지!
     }
 ?>
+</div>
 </body>
 </html>

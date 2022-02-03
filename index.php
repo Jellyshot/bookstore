@@ -3,7 +3,7 @@
     require './utility/nav.php';
 ?>
 <div class="search-container">
-    <form action="./book/book_searchResult.php" method="POST" class="search_box">
+    <form action="./book/book_searchResult.php" method="GET" class="search_box">
         <select name="s_ctg">
             <option value="book_name">책이름</option>
             <option value="aut_name">작가명</option>

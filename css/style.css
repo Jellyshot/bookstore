@@ -103,21 +103,22 @@ header a:hover, .drop_menu:hover button{
     width: 100%;
 }
 
-.search-container .search_box{
+.search_box{
     border: 3px solid var(--shadow-color-);
     margin: auto;
     width: 50%;
     box-shadow: 3px 3px 8px var(--deep-color-);
+    display: flex;
 }
-.search-container input[type=text] {
+.search_box input[type=text] {
     padding: 6px;
     margin: 3px auto;
     font-size: 17px;
     border: none;
-    width: 80%;
+    width: 70%;
 }
 
-.search-container input[type=submit] { 
+.search_box input[type=submit] { 
     font-family: FontAwesome;
     float: right;
     margin: 3px;
@@ -129,15 +130,15 @@ header a:hover, .drop_menu:hover button{
     cursor: pointer;
 }
 
-.search-container input[type=submit]:hover {
+.search_box input[type=submit]:hover {
     background: var(--shadow-color-);
 }
 
-.search-container select{
+.search_box select{
     border: none;
     padding: 3px 5px;
     color: var(--black-color-);
-    font-size: 17px;
+    font-size: 15px;
 }
 select, input:focus{
     outline: none;
@@ -214,11 +215,77 @@ select, input:focus{
     padding: 10px;
 }
 
+/* ---------------------------- book_search_result ----------------------------- */
+.search_result_container{
+    width: 100%;
+    padding: 14px 0px;
+}
+table{
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    border: 3px solid var(--shadow-color-);
+}
+th, td{
+    border: 1px solid var(--deep-color-);
+    color: var(--black-color-);
+    text-align: center;
+}
+.pagination{
+    text-align: center;
+    margin: 14px 0px;
+}
+.pagination a{
+    background-color: var(--grey-color-);
+    padding: 4px 10px;
+    color: var(--black-color-);
+    margin: 4px;
+}
+a{
+    text-decoration: none;
+}
+
+/* ---------------------------------   book detail veiw ---------------------*/
+
+.card{
+    width: 80%;
+    margin: 10vh auto;
+    height: 300px;
+    display: flex;
+    border: 1px solid red;
+}
+.card img{
+    line-height: 400px;
+}
+.b_dtail{
+    margin: auto;
+    padding: 14px;
+}
+
+.buttons{
+    width: 80%;
+    margin: 0px auto;
+    text-align: center;
+}
+.buttons button, .buttons a{
+    margin: 0px 4px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background: var(--lightp-color-);
+    font-size: 15px;
+    color: whitesmoke;
+}
+
+
 /* ---------------------------- 미디어 스크린 시작 -------------------------------- */
 @media screen and (max-width:1020px) {
     .r_button input{
         width: 100%;
     }  
+    .search_box, select{
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width:690px){
@@ -254,8 +321,8 @@ select, input:focus{
         text-align: left;
     }
 
-    .search-container input[type=text] {
-        width: 60%;
+    .search-container input[type=text]{
+        width: 50%;
         font-size: 14px;
     }
     .search-container .search_box{

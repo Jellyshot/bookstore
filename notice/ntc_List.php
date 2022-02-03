@@ -15,7 +15,7 @@ require_once '../utility/loginchk.php';
                 $page_no = 1;
             }
     // 2.3 offset값 설정 (각 페이지의 n-1번 버튼이 시작될 값을 구함.)
-        $offset = ($pageNo - 1) * $recods_per_page;
+        $offset = ($page_no - 1) * $recods_per_page;
     
     // 2.4. 위의 조건으로 검색 시 전체 페이지 개수 계산
         // 2.4.1 전체 레코드 검색
@@ -39,12 +39,12 @@ require_once '../utility/loginchk.php';
     <h1>공지사항</h1>
     <!-- 관리자로 로그인시에만 보일 버튼 -->
 <?php 
-    if ($_SESSION['m_id'] == 'admin') {
+    if (isset($_SESSION['mem_id']) && $_SESSION['mem_id'] != '' && $_SESSION['mem_id'] == 'admin') {
 ?>
         <a href="./ntc_write.php">글쓰기</a>
         <a href="./ntc_write100.php">100개쓰기</a>
 <?php
-    }  
+}  
     $sql = "SELECT * FROM notice Limit $offset, $recods_per_page";
     $resultset = $conn->query($sql);
 ?>
@@ -71,6 +71,7 @@ require_once '../utility/loginchk.php';
         }
 ?>
 </table>
+<div class="pagination">
 <?php
     // 페이지네이션 버튼
     if($page_no >1){
@@ -86,6 +87,7 @@ require_once '../utility/loginchk.php';
     echo "등록된 공지사항이 없습니다";
 }
 ?>
+</div>
 </div>
 </body>
 </html>
