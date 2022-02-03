@@ -12,8 +12,8 @@
         <a href="./manage_order.php">주문관리</a>
     </aside>
     <main>
-        <h1>도서관리 페이지 입니다.</h1>
-        <a href="">도서추가</a>
+        <h1>거래처관리 페이지 입니다.</h1>
+        <a href="">거래처추가</a>
         <table>
 
         </table>

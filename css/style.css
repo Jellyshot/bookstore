@@ -275,6 +275,7 @@ a{
     background: var(--lightp-color-);
     font-size: 15px;
     color: whitesmoke;
+    cursor: pointer;
 }
 
 

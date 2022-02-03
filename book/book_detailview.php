@@ -29,8 +29,13 @@
     </div>
     <div class="buttons">
     <button onclick="history.back(-1)">목록으로</button>
-    <a href="">장바구니</a>
-    <button>구매하기</button><br>
+<?php
+    if(isset($_SESSION['mem_id'])&&($_SESSION['mem_id']!='')){
+?>
+        <a href="../order/cart_insert.php?book_code=<?= $row['book_code'] ?>">장바구니</a>
+        <a href="../order/oderProcess.php?book_code=<?= $row['book_code'] ?>">구매하기</a><br>
+<?php
+    } ?>
     </div>
     <section class="b_dtail">
         <table>

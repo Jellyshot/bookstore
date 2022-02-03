@@ -1,13 +1,14 @@
 <?php
     require '../utility/dbconfig.php';
 
-    if($_SESSION['mem_id']=='admin'){
-        for($i = 0; $i < 100; $i++){
+// 아닝이거 왜 안대 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
+    if($_SESSION['mem_id'] == 'admin'){
+        for($i = 0; $i < 300; $i++){
             $ntc_subject = "공지사항".$i;
             $ntc_contents = "공지사항 테스트 입니다".$i;
-
-            $stmt = $conn->prepare("INSERT INTO notice(ntc_subject, ntc_contents) VALUES(?,?)");
-            $stmt->bind_param("ss",$ntc_subject, $ntc_contents);
+            $mem_id = $_SESSION['mem_id'];
+            $stmt = $conn->prepare("INSERT INTO notice(ntc_subject, ntc_contents, mem_id)VALUES(?, ?, ?)");
+            $stmt->bind_param("sss",$ntc_subject, $ntc_contents, $mem_id);
             $stmt->execute();
         }
         $conn->close();
