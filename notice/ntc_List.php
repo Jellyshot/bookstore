@@ -46,7 +46,7 @@ require_once '../utility/loginchk.php';
 <?php
     }  
     $sql = "SELECT * FROM notice Limit $offset, $recods_per_page";
-    $resultset = $conn->query();
+    $resultset = $conn->query($sql);
 ?>
 </div>
 <div class="notice_bottom">
@@ -74,13 +74,13 @@ require_once '../utility/loginchk.php';
 <?php
     // 페이지네이션 버튼
     if($page_no >1){
-        echo "<a href='book_searchResult.php?page_no=1'>First</a>";
+        echo "<a href='ntc_list.php?page_no=1'>First</a>";
     }
     for($count = $start_page; $count <= $end_page; $count++){
-        echo "<a href='book_searchResult.php?page_no=".$count."'>".$count."</a>";
+        echo "<a href='ntc_list.php?page_no=".$count."'>".$count."</a>";
     }
     if($page_no < $total_pages) {
-        echo "<a href = 'book_searchResult.php?page_no=".$total_pages."'>Last</a>";
+        echo "<a href = 'ntc_list.php?page_no=".$total_pages."'>Last</a>";
     }
 }else{
     echo "등록된 공지사항이 없습니다";

@@ -10,10 +10,13 @@ $sql = $conn->query($sql);
 $row= $sql->fetch_assoc();
 
 echo "<h1>공지사항 상세페이지</h1>";
-echo "<a href='./ntc_list'>목록으로</a>";
-
 if($sql->num_rows >0){
 ?>
+<div class="n_buttons">
+    <a href="./ntc_list.php">목록으로</a>
+    <a href="./ntc_update.php?ntc_code=$ntc_code">수정</a>
+    <a href="./ntc_deleteProcess.php?ntc_code=$ntc_code">삭제</a>
+</div>
     <table>
         <tr><th>제목</th><td><?= $row['ntc_subject'] ?></td></tr>
         <tr><th colspan="2">상세내용</th></tr>
