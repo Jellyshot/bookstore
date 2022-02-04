@@ -41,6 +41,7 @@ if($chk_login) {
                 <a href="../messege/msg_list.php">쪽지함</a>
                 <a href="../membership/mem_update.php?id=<?= $_SESSION['mem_id']?>">회원정보수정</a>
                 <a href="../order/od_list.php">구매내역</a>
+                <a href="../order/cart_list.php">장바구니</a>
             </div>
             </div>
             <a href="/membership/mem_logout.php">로그아웃</a>

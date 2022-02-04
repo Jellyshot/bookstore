@@ -5,7 +5,7 @@
     if (isset($_SESSION['mem_id']) && $_SESSION['mem_id'] != '' && $_SESSION['mem_id'] == 'admin') {
 ?>
     <aside>
-        <a href="./manage_book.php">도서관리</a>
+        <a href="./admin.php">도서관리</a>
         <a href="./manage_publisher.php">거래처관리</a>
         <a href="./manage_author.php">작가정보관리</a>
         <a href="./manage_member.php">회원관리</a>

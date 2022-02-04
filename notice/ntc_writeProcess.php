@@ -6,8 +6,8 @@
 // 2. 관리자 로그인 확인
 if($_SESSION['mem_id']=='admin'){
 
-    $ntc_subject = $_GET['ntc_subject'];
-    $ntc_contents = $_GET['ntc_contents'];
+    $ntc_subject = $_POST['ntc_subject'];
+    $ntc_contents = $_POST['ntc_contents'];
     $mem_id = $_SESSION['mem_id'];
     $upload_path = './n_upload/';
 
@@ -19,7 +19,7 @@ if($_SESSION['mem_id']=='admin'){
             if(DBG) echo outmsg(UPLOAD_SUCCESS);
 
             $stmt =$conn->prepare("INSERT INTO notice(ntc_subject, ntc_contents, mem_id, ntc_upload) VALUES(?,?,?,?)") ;
-            $stmt->bind_param("SSSS", $ntc_subject, $ntc_contents, $mem_id, $filename);
+            $stmt->bind_param("ssss", $ntc_subject, $ntc_contents, $mem_id, $filename);
             $stmt->execute();
         }else{
             if(DBG) echo outmsg(UPLOAD_FAIL);
@@ -27,7 +27,7 @@ if($_SESSION['mem_id']=='admin'){
 //  4. 업로드된 파일이 없는 경우, 받아온 값 테이블에 입력
     }else{
         $stmt =$conn->prepare("INSERT INTO notice(ntc_subject, ntc_contents, mem_id) VALUES(?,?,?)") ;
-        $stmt->bind_param("SSS", $ntc_subject, $ntc_contents, $mem_id);
+        $stmt->bind_param("sss", $ntc_subject, $ntc_contents, $mem_id);
         $stmt->execute();
     }
 //  5. 리소스 반납

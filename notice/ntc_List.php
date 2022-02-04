@@ -45,7 +45,7 @@ require_once '../utility/loginchk.php';
         <a href="./ntc_write100.php">100개쓰기</a>
 <?php
 }  
-    $sql = "SELECT * FROM notice Limit $offset, $recods_per_page";
+    $sql = "SELECT * FROM notice ORDER BY ntc_code desc Limit $offset, $recods_per_page";
     $resultset = $conn->query($sql);
 ?>
 </div>

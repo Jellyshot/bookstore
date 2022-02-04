@@ -1,7 +1,8 @@
 <?php
     require '../utility/dbconfig.php';
+    require_once '../utility/loginchk.php';
 
-// 아닝이거 왜 안대 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
+    // session값을 쓰려면 session start가 있어야함.
     if($_SESSION['mem_id'] == 'admin'){
         for($i = 0; $i < 300; $i++){
             $ntc_subject = "공지사항".$i;
@@ -17,6 +18,6 @@
         header('Location: ./ntc_list.php');
     }else{
         echo "글쓰기 권한이 없습니다.";
-        header('Location: ./ntc_list.php');
+        //header('Location: ./ntc_list.php');
     }
 ?>

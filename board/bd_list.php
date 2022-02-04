@@ -68,7 +68,7 @@ require_once '../utility/loginchk.php';
     <td><?= $row['bd_rdate']?></td>
     <tr>
 <?php
-        }
+    }
 ?>
 </table>
 <div class="pagination">

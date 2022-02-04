@@ -68,7 +68,7 @@
     
 ?> 
 <div class="search_result_container">
-    <form action="./book/book_searchResult.php" method="POST" class="search_box">
+    <form action="./book_searchResult.php" method="POST" class="search_box">
         <select name="s_ctg">
             <option value="book_name">책이름</option>
             <option value="aut_name">작가명</option>
@@ -79,7 +79,7 @@
     </form>
 </div>
 <div class="result_table">
-        <h1 style="text-align: center;"><?= $search ?>(으)로 검색한 결과</h1>
+        <h1 style="text-align: center;"><?=$search?>(으)로 검색한 결과</h1>
         <h3 style="text-align:center;">&#91;검색된 결과 : 총 <?= $total_recods ?> 개&#93;</h3><br>
         
         <table>

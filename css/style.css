@@ -252,7 +252,6 @@ a{
     margin: 10vh auto;
     height: 300px;
     display: flex;
-    border: 1px solid red;
 }
 .card img{
     line-height: 400px;
@@ -277,7 +276,65 @@ a{
     color: whitesmoke;
     cursor: pointer;
 }
-
+/* --------------------- ntc_list.php ------------------------ */
+.notice_top{
+    width: 80%;
+    margin: 20px auto;
+}
+.n_buttons{
+    width: 80%;
+    margin: 20px auto;
+}
+.n_buttons a{
+    padding: 8px 16px;
+    color: whitesmoke;
+    background-color: var(--shadow-color-);
+    border-radius: 4px;
+    font-size: 15px;
+}
+/* ----------------------ntc_update.php ----------------------------------- */
+.n_buttons input[type=submit]{
+    padding: 8px 16px;
+    color: whitesmoke;
+    background-color: var(--shadow-color-);
+    border-radius: 4px;
+    font-size: 15px;
+    border: none;
+}
+.n_updateform{
+    width: 80%;
+    margin: auto;
+}
+.n_update{
+    width: 100%;
+    display: table-cell;   
+}
+.n_update input[type=text]{
+    margin: 10px auto;
+}
+h1{
+    width:80%; 
+    margin:20px auto;
+}
+/* ----------------------- admin.php ----------------------- */
+aside{
+    float: left;
+    padding: var(--nav-padding-);
+    font-size: var(--nav-font-);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--black-color-);
+    height: calc(100vh - 61px);
+}
+aside a{
+    padding: var(--nav-padding-);
+    color: whitesmoke;
+}
+main{
+    float: left;
+    width: calc(100% - 190.41px);
+}
 
 /* ---------------------------- 미디어 스크린 시작 -------------------------------- */
 @media screen and (max-width:1020px) {
