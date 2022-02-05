@@ -335,6 +335,63 @@ main{
     float: left;
     width: calc(100% - 190.41px);
 }
+/* -------------------------- mypage.php ------------------------------ */
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+.bg-image-full {
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+}
+.my-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+.fs-3 {
+    font-size: 1.75rem !important;
+    color: whitesmoke;
+}
+.fw-bolder {
+    font-weight: bolder !important;
+}
+.container{
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+.col-lg-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
 
 /* ---------------------------- 미디어 스크린 시작 -------------------------------- */
 @media screen and (max-width:1020px) {

@@ -60,7 +60,7 @@
     INNER JOIN category AS c ON b.ctg_code = c.ctg_code
     WHERE ".$category. " like '%".$search."%'";
     // WHERE $category like '%$search%';";
-    // 이 쿼리 집에서는 됬는데 왜 학원에서는 또 안됨 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
+    // 이 쿼리 집에서는 됬는데 왜 학원에서는 또 안됨 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ 집의 mysql이 좀더 엄격하게 쿼리문 통제함 ㅠㅠ?
     $resultset = $conn->query($sql);
     // $row = mysqli_num_rows($resultset)
     // ***** 이거 있으면 굳이 위에서 pagination을 위한 카운트 sql구문 안해도 되는거 아닐까?
@@ -68,7 +68,7 @@
     
 ?> 
 <div class="search_result_container">
-    <form action="./book_searchResult.php" method="POST" class="search_box">
+    <form action="./book_searchResult.php" method="GET" class="search_box">
         <select name="s_ctg">
             <option value="book_name">책이름</option>
             <option value="aut_name">작가명</option>

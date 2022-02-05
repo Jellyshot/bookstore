@@ -64,13 +64,14 @@
         
 <?php
     // 카테고리 1값만 가져오네;;;뭐지;;;;;;??
+    // 1만 가져온게 아니라, ctg_code에 맞춰서 정렬된거였음 ㅠㅠ 앞으로 innner join을 쓰면 꼭 order by 해주자!
     $sql="SELECT book_upload, book_code, book_name, ctg_name, aut_name, pbs_name, book_info, book_cost, book_price, book_pdate FROM book AS b
         INNER JOIN author AS a ON b.aut_code = a.aut_code
         INNER JOIN category AS c ON b.ctg_code = c.ctg_code
         INNER JOIN publisher AS p ON b.pbs_code = p.pbs_code
         ORDER BY book_code ASC 
         LIMIT ". $offset." ,". $pagination_length;
-         
+        
     
     $result = $conn->query($sql);
 
@@ -105,9 +106,10 @@
         echo "<a href='admin.php?page_no=".$total_pages."'>Last</a>";
     }
 ?>
+<!-- 5. 개별로 찾아 수정을 하기 위한 검색창 -->
     </div>
     <div class="search_result_container">
-    <form action="./book_searchResult.php" method="POST" class="search_box">
+    <form action="./book_searchResult.php" method="GET" class="search_box">
         <select name="s_ctg">
             <option value="book_name">책이름</option>
             <option value="aut_name">작가명</option>
