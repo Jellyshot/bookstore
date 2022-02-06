@@ -12,7 +12,7 @@ if($chk_login){
     <form action="./bd_writeProcess.php" method="post" enctype="multipart/form-data" class="writeform">
         <input type="hidden" name="mem_id" value="<?= $_SESSION['mem_id'] ?>" readonly><br>
         <input type="text" name="bd_subject" placeholder="제목" required><br>
-        <textarea name="bd_contents" rows="10" placeholder="내용을 작성하세요" required></textarea><br>
+        <textarea name="bd_contents" rows="16" placeholder="내용을 작성하세요" required></textarea><br>
         <input type="file" name="bd_upload"><br>
         <input type="submit" value="저장">
     </form>

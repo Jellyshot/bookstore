@@ -320,7 +320,7 @@ a{
     margin: 1rem 0px;
     padding: 1rem;
 }
-.writeform input[type=submit]{
+.writeform input[type=submit], .writeform a, .writeform input[type=button]{
     padding: 8px 16px;
     color: whitesmoke;
     background-color: var(--shadow-color-);
@@ -328,6 +328,10 @@ a{
     font-size: 15px;
     font-family: 'Noto Sans KR', sans-serif;
     border:none;
+    margin: 4px;
+}
+.textalign_center{
+    text-align: center;
 }
 /* ----------------------ntc_update.php ----------------------------------- */
 .n_buttons input[type=submit]{
@@ -519,6 +523,11 @@ main{
 .width80{
     width: 80%;
     margin: auto;
+}
+.width80 input[type=submit], .width80 a, .width80 input[type=button]{
+    display: inline-block;
+    width: 40%;
+    text-align: center;
 }
 
 /* ----------- 반짝이 효과 주기!! --------------- */

@@ -28,10 +28,10 @@ if ($chk_login) {
                 while ($row = $stmt->fetch_assoc()) {
             ?>
                     <tr>
-                        <td><?= $row['bd_subject'] ?></td>
+                        <td><a href="../board/bd_detailview.php?bd_code=<?=$row['bd_code']?>"><?= $row['bd_subject'] ?></a></td>
                         <td><?= $row['bd_rdate'] ?></td>
                     </tr>
-                <?php   }
+        <?php   }
             } else {
                 ?>
                 <tr>

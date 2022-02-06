@@ -7,7 +7,7 @@ require_once '../utility/loginchk.php';
 $bd_code = $_GET['bd_code'];
 $upload_path = './bd_upload/';
 
-$sql = "SELECT * FROM board WHERE bd_code = $bd_code";
+$sql = "SELECT * FROM board WHERE bd_code ='". $bd_code."'";
 $sql = $conn->query($sql);
 $row = $sql->fetch_assoc();
 ?>
@@ -19,8 +19,8 @@ $row = $sql->fetch_assoc();
     <?php
     if (isset($_SESSION['mem_id']) && $_SESSION['mem_id'] != '' && $_SESSION['mem_id'] == $row['mem_id']) {
     ?>
-        <a href="./bd_update.php?bd_code=$bd_code">수정</a>
-        <a href="./bd_deleteProcess.php?bd_code=$bd_code">삭제</a>
+        <a href="./bd_update.php?bd_code=<?=$bd_code?>">수정</a>
+        <a href="./bd_deleteProcess.php?bd_code=<?=$bd_code?>">삭제</a>
     <?php
     }
     echo "</div>";

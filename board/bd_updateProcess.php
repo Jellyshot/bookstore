@@ -5,10 +5,11 @@
 
     if($chk_login){
 
-        $bd_code = 'bd_code';
-        $bd_subject = 'bd_subject';
-        $bd_contents = 'bd_contents';
-        $bd_upload = 'bd_upload';
+        $bd_code = $_POST['bd_code'];
+        $bd_subject = $_POST['bd_subject'];
+        $bd_contents = $_POST['bd_contents'];
+        // $bd_upload = $_POST['bd_upload'];
+        $upload_path = './bd_upload/';
 
 //  2. 첨부파일이 있으면 이름 정의 및 파일 위치 지정 시키기
     if(isset($_FILES['bd_upload']['tmp_name']) && ( $_FILES['bd_upload']['tmp_name'] != "")) {
@@ -22,7 +23,7 @@
         //file이 정상적으로 업로드가 되어있으면, 기존 파일이 있는경우 삭제처리 하고 테이블에 추가하는 코드 작성.
         if(move_uploaded_file($_FILES['bd_upload']['tmp_name'], $upload_path.$filename)){
 
-                $sql="SELECT * FROM board WHERE bd_id ='" .$bd_id. "'";
+                $sql="SELECT * FROM board WHERE bd_code ='" .$bd_code. "'";
                 $resultset = $conn->query($sql);
                 $row = $resultset->fetch_assoc();
                 // fatch_row: 인덱스에 따른 값이 불려옴
@@ -39,11 +40,11 @@
     
     // 3. 업데이트 처리를 위한 prepared sql 구성 및 bind
         $stmt = $conn->prepare("UPDATE board SET bd_subject = ?, bd_contents = ?, bd_upload = ? WHERE bd_code = ?");
-        $stmt->bind_param("ssss", $bd_subject, $bd_contents, $bd_upload, $bd_code);
+        $stmt->bind_param("ssss", $bd_subject, $bd_contents, $filename, $bd_code);
 
     }else { 
         // 업로드 된 파일이 없을 때 업데이트 처리를 위한 prepared sql 구성 및 bind param
-        $stmt = $conn->prepare("UPDATE board SET bd_subject = ?, bd_contents = ?WHERE bd_code = ?" );
+        $stmt = $conn->prepare("UPDATE board SET bd_subject = ?, bd_contents = ? WHERE bd_code = ?" );
         $stmt->bind_param("sss", $bd_subject, $bd_contents, $bd_code);
     }
     $stmt->execute();
@@ -53,7 +54,7 @@
         $stmt->close();
     
         echo outmsg(UPDATE_SUCCESS);
-        header('Location: ./bd_detailview.php?bd_code='.$bd_code);
+        header('Location: ./bd_list.php');
 }else{
     echo outmsg(LOGIN_NEED);
 }

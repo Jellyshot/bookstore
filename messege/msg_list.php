@@ -22,7 +22,7 @@ if ($chk_login) {
         <table style="margin-top: 1.5rem;">
             <tr>
                 <th>보낸사람</th>
-                <th>보낸날짜</th>
+                <th>받은날짜</th>
             </tr>
             <?php
             $sql = "SELECT * FROM messege WHERE rec_mem_id = '" . $_SESSION['mem_id'] . "' order by msg_rdate desc";

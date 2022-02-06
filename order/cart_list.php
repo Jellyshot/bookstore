@@ -50,6 +50,11 @@ $sql = $conn->query($sql);
 </table>
 <!-- *** 이게 안먹힌 이유! : $total는 지역변수라 while문의 대괄호를 나오면 아무값이 없음! while문 밖에서 초기화 선언을 해 준후에 while문을 돌리면서 값을 더하게 한다. -->
 <p style="text-align:right; width:80%; margin:20px auto; font-size:1.5rem;">총 합계금액 : <?= $total ?>원</p>
+
+<!-- order Process 미구현 2022-02-07 -->
+<div class="r_info" style="width: 80%; margin:auto;">
+<a href="../order/orderProcess.php" style="width:100%; margin-top:3rem; text-align:center; font-size: 17px;">구매하기</a>
+</div>
 <?php
 $conn->close();
 $sql->close();
