@@ -17,8 +17,8 @@
     $offset = ($page_no -1) * $recods_per_page;
 
     // 총 레코드수를 계산하기 위한 count 쿼리 작성
-    $sql = "SELECT count(*) As total_recods FROM ordermain AS b 
-    ORDER BY book_code desc";
+    $sql = "SELECT count(*) AS total_recods FROM ordermain";
+
 
     $result = $conn->query($sql);
     $total_recods = $result->fetch_array();

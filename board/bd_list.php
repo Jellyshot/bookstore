@@ -59,6 +59,7 @@ require_once '../utility/loginchk.php';
     <tr>
         <th>No.</th>
         <th>제목</th>
+        <th>작성자</th>
         <th>작성일자</th>
     </tr>
 
@@ -70,6 +71,7 @@ require_once '../utility/loginchk.php';
     <tr>
     <td><?= $row['bd_code'] ?></td>
     <td><a href="./bd_detailview.php?bd_code=<?= $row['bd_code']?>"><?= $row['bd_subject']?></a></td>
+    <td><?= $row['mem_id']?></td>
     <td><?= $row['bd_rdate']?></td>
     <tr>
 <?php

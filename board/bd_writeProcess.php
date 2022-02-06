@@ -10,24 +10,25 @@ if($chk_login){
     $mem_id = $_SESSION['mem_id'];
     $bd_subject = $_POST['bd_subject'];
     $bd_contents = $_POST['bd_contents'];
-    $upload_path = './b_upload/';
+    $upload_path = './bd_upload/';
 
 // 3. 업로드된 파일이 있으면, 이름 부여하고 폴더이동한 후 테이블에 입력
-    if(is_uploaded_file($_FILES['b_upload']['tmp_name'])){
-        $filename = time()."_".$_FILES['b_upload']['name'];
+    if(is_uploaded_file($_FILES['bd_upload']['tmp_name'])){
+        $filename = time()."_".$_FILES['bd_upload']['name'];
 
-        if(move_uploaded_file($_FILES['b_upload']['tmp_name'],$upload_path.$filename)){
-            if(DBG) echo outmsg(UPLOAD_SUCCESS);
-
-            $stmt =$conn->prepare("INSERT INTO notice(bd_subject, bd_contents, mem_id, b_upload) VALUES(?,?,?,?)") ;
+        if(move_uploaded_file($_FILES['bd_upload']['tmp_name'],$upload_path.$filename)){
+            
+            $stmt =$conn->prepare("INSERT INTO board(bd_subject, bd_contents, mem_id, bd_upload) VALUES(?,?,?,?)") ;
             $stmt->bind_param("ssss", $bd_subject, $bd_contents, $mem_id, $filename);
             $stmt->execute();
+
+            if(DBG) echo outmsg(UPLOAD_SUCCESS);
         }else{
             if(DBG) echo outmsg(UPLOAD_FAIL);
         }
 //  4. 업로드된 파일이 없는 경우, 받아온 값 테이블에 입력
     }else{
-        $stmt =$conn->prepare("INSERT INTO notice(bd_subject, bd_contents, mem_id) VALUES(?,?,?)") ;
+        $stmt =$conn->prepare("INSERT INTO board(bd_subject, bd_contents, mem_id) VALUES(?,?,?)") ;
         $stmt->bind_param("sss", $bd_subject, $bd_contents, $mem_id);
         $stmt->execute();
     }

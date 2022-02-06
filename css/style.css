@@ -19,12 +19,13 @@
 }
 
 header{
+    /* position: fixed;
+    top: 0px; */
     overflow: hidden;
     background-color: var(--main-color-);
     box-shadow: 0px 5px 8px var(--deep-color-);
-    /* position: fixed;
-    top: 0px; */
     width: 100%;
+    
 }
 
 /* 메뉴가 들어있는 a태그들을 일렬로 세움 */
@@ -65,6 +66,7 @@ header .active{
     font-size: var(--nav-font-);
     background-color: inherit;
     color: inherit;
+    z-index:1;
 }
 
 /* hover효과 주기 */
@@ -201,8 +203,7 @@ select, input:focus{
 .r_container{
     width: 50%;
     margin: 20px auto;
-    padding-top: 50px;
-    border: 1px solid red;
+    padding-top: 20px;
 }
 .r_info input:not(:nth-child(2)){
     width: 100%;
@@ -224,6 +225,15 @@ select, input:focus{
     background-color: var(--shadow-color-);
     color: whitesmoke;
     border: none;
+}
+.r_info a{
+    padding: 8px 16px;
+    color: whitesmoke;
+    background-color: var(--point-color-);
+    border-radius: 4px;
+    font-size: 15px;
+    margin: 20px auto;
+    display: inline-block;
 }
 
 /* ---------------------------- book_search_result ----------------------------- */
@@ -304,6 +314,21 @@ a{
     border-radius: 4px;
     font-size: 15px;
 }
+/* ----------------------ntc_write.php ----------------------------------- */
+.writeform input, .writeform textarea{
+    width: 100%;
+    margin: 1rem 0px;
+    padding: 1rem;
+}
+.writeform input[type=submit]{
+    padding: 8px 16px;
+    color: whitesmoke;
+    background-color: var(--shadow-color-);
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    border:none;
+}
 /* ----------------------ntc_update.php ----------------------------------- */
 .n_buttons input[type=submit]{
     padding: 8px 16px;
@@ -367,6 +392,10 @@ main{
     max-width: 100%;
     height: auto;
 }
+.my-5 img{
+    width: 200px;   
+    height: 200px;
+}
 .rounded-circle {
     border-radius: 50% !important;
 }
@@ -376,6 +405,7 @@ main{
 .fs-3 {
     font-size: 1.75rem !important;
     color: whitesmoke;
+    margin-top: 30px;
 }
 .fw-bolder {
     font-weight: bolder !important;
@@ -446,10 +476,11 @@ main{
 }
 .bookcard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 300px;
-    min-width: 150px;
+    width: 200px;
+    min-width: 100px;
     height: auto;
-    margin: 14px;
+    margin: 20px;
+    padding: 4px;
     text-align: center;
     font-family: arial;
 }
@@ -489,6 +520,41 @@ main{
     width: 80%;
     margin: auto;
 }
+
+/* ----------- 반짝이 효과 주기!! --------------- */
+
+.blinking{ 
+    -webkit-animation:blink 1.5s ease-in-out infinite alternate; -moz-animation:blink 1.5s ease-in-out infinite alternate; 
+    animation:blink 1.5s ease-in-out infinite alternate; 
+} 
+@-webkit-keyframes blink{
+    0% {opacity:0;} 
+    100% {opacity:1;} 
+} 
+@-moz-keyframes blink{
+    0% {opacity:0;} 
+    100% {opacity:1;} 
+} 
+@keyframes blink{
+    0% {opacity:0;} 
+    100% {opacity:1;} 
+}
+/* ------------- msg_list.php -------------- */
+
+.messageList{
+    width: 80%;
+    margin: 2rem auto;
+}
+.messageList a{
+    display: block;
+    text-align: center;
+    background-color: var(--lightp-color-);
+    color: whitesmoke;
+    font-size: 1rem;
+    padding: 6px 0px;
+}
+
+
 /* ---------------------------- 미디어 스크린 시작 -------------------------------- */
 @media screen and (max-width:1020px) {
     .r_button input{

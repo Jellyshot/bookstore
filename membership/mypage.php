@@ -19,14 +19,11 @@ if ($chk_login) {
             <div class="my-5" style="text-align: center;">
 
                 <!-- 업로드된 사진이 있으면, img에 집어 넣고, 없으면 기본 이미지를 넣는 if문 작성 -->
-                <?php
-                if (isset($row['mem_upload']) && ($row['mem_upload'] != '')) {
-                ?>
-                    <img class="img-fluid rounded-circle mb-4" src="<?= $upload_path ?><?= $row['mem_profile'] ?>" alt="..." />
-                <?php
-                } else {
-                ?>
-                    <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
+<?php
+                if (isset($row['mem_profile']) && ($row['mem_profile'] != '')) {
+?>                    <img class="img-fluid rounded-circle mb-4" src="<?= $upload_path ?><?= $row['mem_profile'] ?>" alt="..." />
+<?php               } else {
+?>                      <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
                 <?php } ?>
                 <h1 class="fs-3 fw-bolder"><?= $_SESSION['mem_id'] ?>님 환영합니다.</h1>
             </div>

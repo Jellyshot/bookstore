@@ -22,6 +22,7 @@
     <a href="../book/recommend.php">도서추천</a>
     <a href="../board/bd_list.php">자유게시판</a>
     </div>
+    
     <div class="header_right">
 <?php
 require 'loginchk.php';

@@ -6,7 +6,7 @@ $upload_path = './book_upload/';
 
 $sql = "select book_code, book_name, aut_name, book_price from book 
         INNER JOIN author ON author.aut_code = book.book_code
-        order by rand() limit 8";
+        order by rand() limit 12";
 $resultset = $conn->query($sql);
 ?>
     <h1>추천도서</h1>

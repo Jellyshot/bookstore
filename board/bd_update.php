@@ -12,7 +12,7 @@ $row= $sql->fetch_assoc();
 echo "<h1>공지사항 상세페이지</h1>";
 if($sql->num_rows >0){
 ?>
-<form action="./bd_updateProcess.php">
+<form action="./bd_updateProcess.php" method="POST" enctype="multipart/form-data"> 
     <div class="n_update">
     <label for="bd_code">공지사항 번호</label>
     <input type="text" name="bd_code" value="<?= $bd_code ?>" /><br>

@@ -8,37 +8,39 @@
     $stmt = $conn->query($stmt);
     $row = $stmt->fetch_assoc();
 ?>
+<script defer src="../js/join_chk.js"></script>
 
     <h1>회원정보 수정</h1>
-    <form action="mem_updateProcess.php" method="POST" enctype="multipart/form-data" class = "r_container">
+    <div class="width80">
+        <hr>
+    </div>
+    <form action="mem_updateProcess.php" method="POST" enctype="multipart/form-data" class = "r_container" name="join_form">
         <div class="r_info">
             
-            <p>아이디</p><br> 
             <!-- id값을 js에서 다루어야 하기 때문에 id input에 id값을 준다 -->
-            <input type="text" id="mem_id" name="mem_id" value="<?= $row['mem_id'] ?>" readonly/><br>
-            <!-- 비밀번호는 일치를 확인해야 하므로 따로 프로세스 처리함 -->
+            <input type="hidden" id="mem_id" name="mem_id" id="mem_id" value="<?= $row['mem_id'] ?>" readonly/><br>
             <p>비밀번호</p>
-            <a href="./mem_pwdchange.php">비밀번호 변경</a>
+            <input type="password" name="mem_pwd" id="mem_pwd" value="<?= $row['mem_pwd'] ?>" required/><br>
+            <p>비밀번호 확인</p>
+            <input type="password" name="mem_cpwd" id="mem_cpwd" value="<?= $row['mem_pwd']?>" required/><br>
             <p>이름</p>
-            <input type="text" name="mem_name" value="<?= $row['mem_name'] ?>" required/><br>
+            <input type="text" name="mem_name" id="mem_name" value="<?= $row['mem_name'] ?>" required/><br>
             <p>주소</p>
             <input type="text" name="mem_address" value="<?= $row['mem_address'] ?>"/><br>
             <p>전화번호</p>
-            <input type="tell" name="mem_phone" maxlength="11" value="<?= $row['mem_phone'] ?>" required/><br>
+            <input type="tell" name="mem_phone" id="mem_phone" maxlength="11" value="<?= $row['mem_phone'] ?>" required/><br>
             <p>이메일</p>
             <input type="email" name="mem_email" value="<?= $row['mem_email'] ?>"/><br>
             <div class="profilechk">
             <p>프로필이미지</p>
-            <img src="<?= $upload_path.$row['mem_profile']?>" alt="Image">
             <input type="file" name="mem_profile" value="<?= $row['mem_profile'] ?>"/><br>
             </div>
         </div>
         <div class="r_button">
-            <input type="submit" value="수정"/>
+            <input type="button" value="수정" onclick="join_chk()"/>
             <input type="button" value="취소" onclick="history.back()"/>
         </div>
     </form>
 
-    <script defer src="../js/idcheck.js"></script>
 </body>
 </html>
