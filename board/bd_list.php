@@ -34,9 +34,14 @@ require_once '../utility/loginchk.php';
                 $end_page = $total_pages;
             }
 ?>
-
-<div class="notice_top">
-    <h1>자유게시판</h1>
+<h1>자유게시판</h1>
+<div class="width80">
+    <h2 style="color:#4a4737;">
+    "담론은 재치있는 사람을, 필기는 정확한 사람을, 독서는 완성된 사람을 만든다."
+&nbsp;&nbsp;<프란시스 베이컨></h2>
+    <hr style="background-color: #4c3a00; height: 3px;">
+</div>
+<div class="n_buttons">
     <!-- 로그인시에만 보일 버튼 -->
 <?php 
     if ($chk_login) {
@@ -45,16 +50,16 @@ require_once '../utility/loginchk.php';
         <a href="./bd_write100.php">100개쓰기</a>
 <?php
 }  
-    $sql = "SELECT * FROM board Limit $offset, $recods_per_page";
+    $sql = "SELECT * FROM board ORDER BY bd_code DESC Limit $offset, $recods_per_page";
     $resultset = $conn->query($sql);
 ?>
 </div>
 <div class="notice_bottom">
 <table>
     <tr>
-        <td>No.</td>
-        <td>제목</td>
-        <td>작성일자</td>
+        <th>No.</th>
+        <th>제목</th>
+        <th>작성일자</th>
     </tr>
 
     <!-- 쿼리구문 실행 -->
@@ -84,7 +89,7 @@ require_once '../utility/loginchk.php';
         echo "<a href = 'bd_list.php?page_no=".$total_pages."'>Last</a>";
     }
 }else{
-    echo "등록된 공지사항이 없습니다";
+    echo "<tr><td colspan='3'>등록된 게시글이 없습니다</td></tr>";
 }
 ?>
 </div>

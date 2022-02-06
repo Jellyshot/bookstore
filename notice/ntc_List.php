@@ -35,8 +35,12 @@ require_once '../utility/loginchk.php';
             }
 ?>
 
-<div class="notice_top">
-    <h1>공지사항</h1>
+<h1>공지사항</h1>
+<div class="width80">
+    <h2 style="color:#4a4737;">"책은 어떤 사람에게는 울타리가 되고 어떤 사람에게는 사다리가 된다."  &nbsp;&nbsp;<레미 드 구르몽></h2>
+    <hr style="background-color: #4c3a00; height: 3px;">
+</div>
+<div class="n_buttons">
     <!-- 관리자로 로그인시에만 보일 버튼 -->
 <?php 
     if (isset($_SESSION['mem_id']) && $_SESSION['mem_id'] != '' && $_SESSION['mem_id'] == 'admin') {
@@ -52,9 +56,9 @@ require_once '../utility/loginchk.php';
 <div class="notice_bottom">
 <table>
     <tr>
-        <td>No.</td>
-        <td>제목</td>
-        <td>작성일자</td>
+        <th>No.</th>
+        <th>제목</th>
+        <th>작성일자</th>
     </tr>
 
     <!-- 쿼리구문 실행 -->
@@ -84,7 +88,7 @@ require_once '../utility/loginchk.php';
         echo "<a href = 'ntc_list.php?page_no=".$total_pages."'>Last</a>";
     }
 }else{
-    echo "등록된 공지사항이 없습니다";
+    echo "<tr><td colspan='3';>등록된 공지사항이 없습니다</td></tr>";
 }
 ?>
 </div>

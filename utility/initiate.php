@@ -19,14 +19,14 @@ $conn->query($sql);
 
 // 사용자 계정 생성
 $account = $dbname;
-$sql = "DROP USER IF EXISTS ".$account;
+$sql = "DROP USER IF EXISTS '".$account."'@'%'";
 $conn->query($sql);
 
-$sql = "CREATE USER IF NOT EXISTS ".$account."'@'%' IDENTIFIED BY '".$account."'";
+$sql = "CREATE USER IF NOT EXISTS '".$account."'@'%' IDENTIFIED BY '".$account."'";
 $conn->query($sql);
 
 // //계정의 리소스 제한
-$sql = "GRANT USAGE ON *.* TO '".$account."'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTION 0";
+$sql = "GRANT USAGE ON *.* TO '".$account."'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0";
 $conn->query($sql);
 
 // //계정에 모든 권한 부여
@@ -160,7 +160,7 @@ $sql="CREATE TABLE IF NOT EXISTS `messege`(
     `sent_mem_id` VARCHAR(20) NOT NULL ,
     `rec_mem_id` VARCHAR(20) NOT NULL ,
     `msg_sentdate` DATETIME NOT NULL ,
-    `mem_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `msg_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     `msg_contents` VARCHAR(200) NOT NULL ,
     PRIMARY KEY (`msg_code`) ,
     FOREIGN KEY (`sent_mem_id`) REFERENCES `membership` (`mem_id`) ON DELETE CASCADE ,
@@ -230,6 +230,7 @@ $sql = "CREATE TABLE IF NOT EXISTS ordermain(
     `mem_id` VARCHAR(20) NOT NULL ,
     `om_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     `om_udate` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+    `chk_order` BOOLEAN NOT NULL DEFAULT FALSE ,
     PRIMARY KEY (`om_code`) ,
     FOREIGN KEY(`mem_id`) REFERENCES `membership`(`mem_id`) ON DELETE CASCADE
     )ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci";

@@ -12,7 +12,7 @@
     $recods_per_page = 10;
     $offset = ($page_no -1) * $recods_per_page;
 
-    $sql = "SELECT count(*) As total_recods FROM book AS b 
+    $sql = "SELECT count(*) As total_recods FROM book AS b
     INNER JOIN author AS a ON b.aut_code = a.aut_code 
     INNER JOIN publisher AS p ON b.pbs_code = p.pbs_code 
     INNER JOIN category AS c ON b.ctg_code = c.ctg_code 
@@ -60,7 +60,7 @@
             <th>구매단가</th>
             <th>판매단가</th>
             <th>출판일</th>
-            <th>삭제</th>
+            <th colspan="2">관리</th>
         
 <?php
     // 카테고리 1값만 가져오네;;;뭐지;;;;;;??
@@ -74,12 +74,13 @@
         
     
     $result = $conn->query($sql);
+    $upload_path = '../book/book_upload/';
 
     while ($row = $result->fetch_array()) {
 ?>      <tr>
-            <td><img src="" alt="이미지 준비중"></td>
+            <td><img src="<?=$upload_path?><?=$row['book_upload']?>" alt="이미지 준비중"></td>
             <td><?=$row['book_code']?></td>
-            <td><a href="../book/book_update.php?book_code=<?=$row['book_code']?>"><?=$row['book_name']?></a></td>
+            <td><?=$row['book_name']?></td>
             <td><?=$row['ctg_name']?></td>
             <td><?=$row['aut_name']?></td>
             <td><?=$row['pbs_name']?></td>
@@ -87,6 +88,7 @@
             <td><?=$row['book_cost']?></td>
             <td><?=$row['book_price']?></td>
             <td><?=$row['book_pdate']?></td>
+            <td><a href="../book/book_update.php?book_code=<?=$row['book_code']?>">수정</a></td>
             <td><a href="../book/book_deleteProcess.php?book_code=<?=$row['book_code']?>">삭제</a></td>
         </tr>     
 <?php        

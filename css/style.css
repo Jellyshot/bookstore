@@ -22,6 +22,9 @@ header{
     overflow: hidden;
     background-color: var(--main-color-);
     box-shadow: 0px 5px 8px var(--deep-color-);
+    /* position: fixed;
+    top: 0px; */
+    width: 100%;
 }
 
 /* 메뉴가 들어있는 a태그들을 일렬로 세움 */
@@ -105,6 +108,7 @@ header a:hover, .drop_menu:hover button{
 
 .search_box{
     border: 3px solid var(--shadow-color-);
+    background-color: white;
     margin: auto;
     width: 50%;
     box-shadow: 3px 3px 8px var(--deep-color-);
@@ -227,6 +231,7 @@ table{
     border: 3px solid var(--shadow-color-);
 }
 th, td{
+    font-size: var(--main-font-);
     border: 1px solid var(--deep-color-);
     color: var(--black-color-);
     text-align: center;
@@ -315,6 +320,7 @@ a{
 h1{
     width:80%; 
     margin:20px auto;
+    margin-top: 10vh
 }
 /* ----------------------- admin.php ----------------------- */
 aside{
@@ -347,8 +353,8 @@ main{
     background-size: cover;
 }
 .my-5 {
-    margin-top: 3rem !important;
-    margin-bottom: 3rem !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
 }
 .img-fluid {
     max-width: 100%;
@@ -358,7 +364,7 @@ main{
     border-radius: 50% !important;
 }
 .mb-4 {
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 1rem !important;
 }
 .fs-3 {
     font-size: 1.75rem !important;
@@ -387,12 +393,95 @@ main{
     flex: 0 0 auto;
     width: 50%;
 }
-.lead {
-    font-size: 1.25rem;
-    font-weight: 300;
+
+.contact_us{
+    font-size: 1em;
+    /* font-weight: bolder; */
+    color: whitesmoke;
+    text-align: center;
+    background: rgb(74,71,55);
+    background: radial-gradient(circle, rgba(74,71,55,1) 0%, rgba(157,147,24,1) 58%, rgba(176,171,153,1) 100%);
+    padding: var(--main-padding-);
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+.mymenu{
+    width: 60%;
+    margin: 10px auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}   
+
+.mymenu a{
+    padding: 2em 1.5em;
+    background-color: var(--main-color-);
+    box-shadow: 4px 8px 8px 0px var(--deep-color-);
+    border-radius: 8px;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    margin: 20px;
 }
 
+.mymenu a:hover{
+    background-color: var(--deep-color-);
+}
 
+/* -------------------- recommend.php ------------------ */
+.cardList{
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-content: space-around;
+}
+.bookcard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 300px;
+    min-width: 150px;
+    height: auto;
+    margin: 14px;
+    text-align: center;
+    font-family: arial;
+}
+.cardList:after{
+    content:'';
+    display:block;
+    clear:both;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;    
+}
+.bookcard a{
+    color: whitesmoke;
+}
+.bookcard button{
+    border: none;
+    outline: 0;
+    padding: 12px;
+    background-color: var(--black-color-);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.bookcard button:hover {
+    opacity: 0.7;
+}
+
+.bookcard p{
+    margin-top: 8px;
+}
+
+.width80{
+    width: 80%;
+    margin: auto;
+}
 /* ---------------------------- 미디어 스크린 시작 -------------------------------- */
 @media screen and (max-width:1020px) {
     .r_button input{

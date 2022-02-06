@@ -4,7 +4,7 @@
     require_once '../utility/loginchk.php';
 
     $upload_path = './profile/';
-    $stmt = "SELECT * FROM membership WHERE mem_id =".$_SESSION['mem_id'];
+    $stmt = "SELECT * FROM membership WHERE mem_id ='".$_SESSION['mem_id']."'";
     $stmt = $conn->query($stmt);
     $row = $stmt->fetch_assoc();
 ?>

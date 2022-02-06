@@ -8,7 +8,7 @@
             $bd_subject = "자유게시판".$i;
             $bd_contents = "자유게시판 테스트 입니다".$i;
             $mem_id = $_SESSION['mem_id'];
-            $stmt = $conn->prepare("INSERT INTO notice(bd_subject, bd_contents, mem_id)VALUES(?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO board(bd_subject, bd_contents, mem_id)VALUES(?, ?, ?)");
             $stmt->bind_param("sss",$bd_subject, $bd_contents, $mem_id);
             $stmt->execute();
         }

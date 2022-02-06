@@ -38,9 +38,8 @@ if($chk_login) {
             <div class="drop_menu">
             <button>회원메뉴<i class="fa fa-caret-down"></i></button>
             <div class="column">
-                <a href="../messege/msg_list.php">쪽지함</a>
+                <a href="../membership/mypage.php?id=<?=$_SESSION['mem_id']?>">마이페이지</a>
                 <a href="../membership/mem_update.php?id=<?= $_SESSION['mem_id']?>">회원정보수정</a>
-                <a href="../order/od_list.php">구매내역</a>
                 <a href="../order/cart_list.php">장바구니</a>
             </div>
             </div>
