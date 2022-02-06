@@ -3,11 +3,15 @@
     require '../utility/nav.php';
 ?>
 
+<script defer src="../js/join_chk.js"></script>
     <h1>회원가입</h1>
+    <div class="width80">
+        <hr>
+    </div>
     <form action="mem_registProcess.php" method="POST" enctype="multipart/form-data" class ="r_container" name="join_form">
         <div class="r_info">
             <!-- id 중복확인을 하기 위한 button에 checkid function 추가 -->
-            <p>아이디</p><br> 
+            <p>아이디</p>
             <button onclick="checkid()">아이디 중복확인</button>
             <!-- id값을 js에서 다루어야 하기 때문에 id input에 id값을 준다 -->
             <input type="text" id="mem_id" name="mem_id" required/><br>
@@ -27,12 +31,11 @@
             <input type="file" name="mem_profile"/><br>
         </div>
         <div class="r_button">
-            <input type="submit" value="가입" onclick="join_chk()"/>
+            <input type="button" value="가입" onclick="join_chk()"/>
             <input type="button" value="취소" onclick="history.back()"/>
             <!-- https://goddino.tistory.com/52 아니 이거보고 하는데 왜 안댐 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ! -->
         </div>
     </form>
 
-    <script defer src="../js/idcheck.js"></script>
 </body>
 </html>

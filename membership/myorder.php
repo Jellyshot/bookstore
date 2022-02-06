@@ -15,6 +15,7 @@ if ($chk_login) {
                 "책을 읽는데 어찌 장소를 가릴소냐? "
                 &nbsp;&nbsp;<이퇴계>
             </h2>
+            <button onclick="history.back()">뒤로가기</button>
             <hr style="background-color: #4c3a00; height: 3px;">
         </div>
         <table style="margin-top: 1.5rem;">

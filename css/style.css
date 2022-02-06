@@ -200,8 +200,9 @@ select, input:focus{
 
 .r_container{
     width: 50%;
-    margin: auto;
+    margin: 20px auto;
     padding-top: 50px;
+    border: 1px solid red;
 }
 .r_info input:not(:nth-child(2)){
     width: 100%;
@@ -209,14 +210,20 @@ select, input:focus{
     padding: 10px;
     margin: 5px auto;
 }
-
+.r_info p{
+    font-size: 17px;
+    font-weight: bold;
+}
 .r_button{
     text-align: center;
 }
 .r_button input{
     width: 24vh;
-    margin: 10px;
-    padding: 10px;
+    margin: 14px;
+    padding: 14px;
+    background-color: var(--shadow-color-);
+    color: whitesmoke;
+    border: none;
 }
 
 /* ---------------------------- book_search_result ----------------------------- */

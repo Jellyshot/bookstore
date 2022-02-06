@@ -24,9 +24,9 @@ function join_chk() {
         mem_pwd.focus();
         return false;
     }
-
+    // 이거 숫자+문자가 가능함;;; 모지
     // 전화번호 정규표현식(숫자만 입력)
-    let phoneCheck = /^[0-9]+/g;
+    let phoneCheck = /^[0-9]+$/g;
 
     if (!phoneCheck.test(mem_phone.value)) {
         alert("전화번호는 숫자만 입력해 주세요.")
