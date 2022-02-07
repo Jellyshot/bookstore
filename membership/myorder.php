@@ -42,6 +42,7 @@ if ($chk_login) {
         <?php
                 } ?>
         </table>
+        <h3 style="text-align: center;">장바구니->구매 기능 구현중입니다.</h3>
     </div>
 <?php
 }

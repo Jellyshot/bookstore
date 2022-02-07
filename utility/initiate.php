@@ -159,7 +159,6 @@ $sql="CREATE TABLE IF NOT EXISTS `messege`(
     `msg_code` INT(8) NOT NULL AUTO_INCREMENT ,
     `sent_mem_id` VARCHAR(20) NOT NULL ,
     `rec_mem_id` VARCHAR(20) NOT NULL ,
-    `msg_sentdate` DATETIME NOT NULL ,
     `msg_rdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     `msg_contents` VARCHAR(200) NOT NULL ,
     PRIMARY KEY (`msg_code`) ,

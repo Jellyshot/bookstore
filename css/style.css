@@ -301,6 +301,7 @@ a{
     color: whitesmoke;
     cursor: pointer;
 }
+
 /* --------------------- ntc_list.php ------------------------ */
 .notice_top{
     width: 80%;
@@ -317,6 +318,28 @@ a{
     border-radius: 4px;
     font-size: 15px;
 }
+
+/* ----- detailview.php 의 코멘트박스 --------- */
+
+.comment_box{
+    margin: 10px auto;
+}
+.comment_buttons a, .c_update input[type=submit], .c_update input[type=button]{
+    padding: 4px 8px;
+    background-color: var(--lightp-color-);
+    color: whitesmoke;
+    font-size: 1rem;
+    margin: 10px auto;
+    border: none;
+}
+.c_update{
+    display: none;
+}
+.c_update input[type=text]{
+    padding: 8px;
+    font-size: 1rem;
+}
+
 /* ----------------------ntc_write.php ----------------------------------- */
 .writeform input, .writeform textarea{
     width: 100%;
@@ -361,6 +384,7 @@ h1{
     margin:20px auto;
     margin-top: 10vh
 }
+
 /* ----------------------- admin.php ----------------------- */
 aside{
     float: left;
@@ -565,8 +589,6 @@ main{
     font-size: 1rem;
     padding: 6px 0px;
 }
-
-
 /* ---------------------------- 미디어 스크린 시작 -------------------------------- */
 @media screen and (max-width:1020px) {
     .r_button input{

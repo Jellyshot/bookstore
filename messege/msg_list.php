@@ -22,7 +22,10 @@ if ($chk_login) {
         <table style="margin-top: 1.5rem;">
             <tr>
                 <th>보낸사람</th>
+                <th>내용</th>
                 <th>받은날짜</th>
+                <th>답장</th>
+                <th>삭제</th>
             </tr>
             <?php
             $sql = "SELECT * FROM messege WHERE rec_mem_id = '" . $_SESSION['mem_id'] . "' order by msg_rdate desc";
@@ -32,7 +35,10 @@ if ($chk_login) {
             ?>
                     <tr>
                         <td><?= $row2['sent_mem_id'] ?></td>
+                        <td><?= $row2['msg_contents'] ?></td>
                         <td><?= $row2['msg_rdate'] ?></td>
+                        <td><a href="./msg_create.php?rec_mem_id=<?=$row2['sent_mem_id']?>" style="background-color:inherit; color:#5abdad; font-weight:bold; font-size:1rem;">&#9993;</a></td>
+                        <td><a href="./msg_deleteProcess.php?msg_code=<?=$row2['msg_code']?>" style="background-color: inherit; color:#4c3a00; font-weight:bold; font-size:1rem;">&#9938;</a></td>
                     </tr>
                 <?php   }
             } else {

@@ -14,7 +14,10 @@ if($chk_login){
         <input type="text" name="bd_subject" placeholder="제목" required><br>
         <textarea name="bd_contents" rows="16" placeholder="내용을 작성하세요" required></textarea><br>
         <input type="file" name="bd_upload"><br>
+        <div class="textalign_center">
         <input type="submit" value="저장">
+        <input type="button" value="취소" onclick="history.back()">
+        </div>
     </form>
 </div>
 <?php
