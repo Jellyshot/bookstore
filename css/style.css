@@ -597,6 +597,12 @@ main{
     .search_box, select{
         font-size: 14px;
     }
+    .mymenu a{
+        font-size: 1rem;
+        display:block;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 @media screen and (max-width:690px){
