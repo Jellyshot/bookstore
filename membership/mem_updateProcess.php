@@ -2,7 +2,6 @@
 
 // 1. DB연결
     require '../utility/dbconfig.php';
-    require '../utility/nav.php';
     require_once '../utility/loginchk.php';
     
         
@@ -16,7 +15,6 @@
     
     $upload_path = './profile/';
 
-    echo $mem_id;
 //  3. 기존 파일이 있으면 삭제하고 없으면 이름붙여주고 파일 이동시키기
     if(isset($_FILES['mem_profile']['tmp_name']) && ( $_FILES['mem_profile']['tmp_name'] != "")) {
     //일단 파일 네임 정의해주고

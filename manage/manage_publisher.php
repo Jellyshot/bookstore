@@ -100,11 +100,10 @@
 <!-- 5. 개별로 찾아 수정을 하기 위한 검색창 끙... 이거 또 만드러야댈듯 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ-->
     </div>
     <div class="search_result_container">
-    <form action="./book_searchResult.php" method="GET" class="search_box">
+    <form action="./manage_publisherSearch.php" method="GET" class="search_box">
         <select name="s_ctg">
             <option value="pbs_name">출판사명</option>
-            <option value="book_name">책이름</option>
-            <option value="aut_name">작가명</option>
+            <option value="pbs_code">출판사 코드</option>
         </select>
         <input type="text" placeholder="검색어를 입력하세요" name="search">
         <input type="submit" value="&#xf002;"/><br>
