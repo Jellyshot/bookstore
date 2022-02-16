@@ -134,7 +134,7 @@
         }
     
 }else{
-        echo '<div class="no_result">검색 결과가 없습니다</div>';
+        echo '<tr><td colspan=9>검색 결과가 없습니다</td></tr>';
         // 이게 왜 위치를 못잡지!
     }
 ?>

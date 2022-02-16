@@ -53,7 +53,7 @@ $sql = $conn->query($sql);
 
 <!-- order Process 미구현 2022-02-07 -->
 <div class="r_info" style="width: 80%; margin:auto;">
-<a href="../order/orderProcess.php" style="width:100%; margin-top:3rem; text-align:center; font-size: 17px;">구매하기</a>
+<a href="../order/orderchk.php" style="width:100%; margin-top:3rem; text-align:center; font-size: 17px;">구매하기</a>
 </div>
 <?php
 $conn->close();

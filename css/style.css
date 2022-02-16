@@ -291,7 +291,7 @@ a{
     margin: 0px auto;
     text-align: center;
 }
-.buttons button, .buttons a{
+.buttons button, .buttons a, .pointbutton{
     margin: 0px 4px;
     padding: 8px 16px;
     border: none;
@@ -545,6 +545,11 @@ main{
 
 .bookcard p{
     margin-top: 8px;
+}
+
+.cardcontainer{
+    height: 10em;
+    overflow: hidden;
 }
 
 .width80{

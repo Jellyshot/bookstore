@@ -27,13 +27,19 @@
             <tr><th>출간일</th><td><?= $row['book_pdate'] ?></td></tr>
         </table>
     </div>
-    <div class="buttons">
-    <button onclick="history.back(-1)">목록으로</button>
-<?php
+    <div class="buttons" style="display: flex; justify-content: center;" >
+        <button onclick="history.back(-1)">목록으로</button>
+        <?php
     if(isset($_SESSION['mem_id'])&&($_SESSION['mem_id']!='')){
-?>
-        <a href="../order/cart_insert.php?book_code=<?= $row['book_code'] ?>">장바구니</a>
-        <a href="../order/oderProcess.php?book_code=<?= $row['book_code'] ?>">구매하기</a><br>
+        ?>      
+        <form method="post" name="form" style="text-align: center;">
+            <input type="hidden" name="book_code" value="<?=$book_code?>">
+            <input type="number" name="cs_cnt" min="1" max="99" value="1">
+            <input type="submit" value="장바구니" onclick="javascript: form.action='../order/cart_insert.php'" class="pointbutton" style="border:none;" >
+            <input type="submit" value="구매하기" onclick="javascript: form.action='../order/orderchk.php'" class="pointbutton" style="border:none;" >
+            
+        </form>
+     
 <?php
     } ?>
     </div>

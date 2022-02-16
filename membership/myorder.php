@@ -28,11 +28,11 @@ if ($chk_login) {
                 $stmt = $conn->query("SELECT om_rdate FROM ordermain WHERE mem_id ='" . $_SESSION['mem_id'] . "' order by om_rdate desc;");
                 $result = $stmt->num_rows;
 
-                if (isset($result) && $result = '') {
+                if (isset($result)) {
                     while ($row = $stmt->fetch_assoc()) {
                 ?>
-                        <td>?= $row['om_rdate']?></td>
-                        <td>?= $row['om_code']?></td>
+                        <td><?= $row['om_rdate']?></td>
+                        <td><?= $row['om_code']?></td>
                     <?php
                     }
                 } else {
