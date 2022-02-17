@@ -13,6 +13,7 @@ $mem_pwd = $_REQUEST['mem_pwd'];
 $stmt = $conn->prepare("SELECT * FROM membership WHERE mem_id = ? and mem_pwd = sha2(?,256)");
 $stmt->bind_param("ss", $mem_id, $mem_pwd);
 $stmt->execute();
+
 $result = $stmt->get_result();
 $row = mysqli_fetch_array($result);
 

@@ -20,29 +20,28 @@ if ($chk_login) {
         </div>
         <table style="margin-top: 1.5rem;">
             <tr>
-                <th>구매날짜</th>
                 <th>구매번호</th>
+                <th>구매날짜</th>
             </tr>
-            <tr>
-                <?php
-                $stmt = $conn->query("SELECT om_rdate FROM ordermain WHERE mem_id ='" . $_SESSION['mem_id'] . "' order by om_rdate desc;");
-                $result = $stmt->num_rows;
-
-                if (isset($result)) {
-                    while ($row = $stmt->fetch_assoc()) {
+            <?php
+                $sql = $conn->query("SELECT * FROM ordermain WHERE mem_id ='".$_SESSION['mem_id']."' order by om_code desc;");
+                
+                
+                if($sql->num_rows>0){
+                    while ($row = $sql->fetch_assoc()) {
                 ?>
-                        <td><?= $row['om_rdate']?></td>
+                        <tr>
                         <td><?= $row['om_code']?></td>
+                        <td><a href="../order/od_detail.php?om_code=<?= $row['om_code']?>"><?= $row['om_rdate']?></a></td>
+                        </tr>
                     <?php
                     }
-                } else {
+                }else{
                     ?>
-                    <td colspan="2">구매내역이 없습니다..</td>
-            </tr>
+                    <tr><td colspan="2">구매내역이 없습니다..</td><tr>
         <?php
                 } ?>
         </table>
-        <h3 style="text-align: center;">장바구니->구매 기능 구현중입니다.</h3>
     </div>
 <?php
 }

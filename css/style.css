@@ -560,6 +560,24 @@ main{
     display: inline-block;
     width: 40%;
     text-align: center;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+    border-radius: 4px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.width80 button{
+    color: whitesmoke;
+    padding: 8px 16px;
+    font-size: 12px;
+    border: none;
+    margin: 4px;
+    background: rgba( 90, 189, 173);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+    border-radius: 4px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 /* ----------- 반짝이 효과 주기!! --------------- */
