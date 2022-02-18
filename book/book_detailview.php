@@ -37,9 +37,8 @@
             <input type="number" name="cs_cnt" min="1" max="99" value="1">
             <input type="submit" value="장바구니" onclick="javascript: form.action='../order/cart_insert.php'" class="pointbutton" style="border:none;" >
             <input type="submit" value="구매하기" onclick="javascript: form.action='../order/orderchk.php'" class="pointbutton" style="border:none;" >
-            
         </form>
-     
+
 <?php
     } ?>
     </div>
