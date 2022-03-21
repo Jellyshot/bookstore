@@ -16,7 +16,7 @@
 
 ### 3. 작업순서
 + view 페이지 Figma툴 이용 prototype 제작(prototype_bookstore.fig)
-+ prototype에 따른 테이블 구조 e-r diagram화(table_diagram.pdf)
++ prototype에 따른 테이블 구조 e-r diagram화(Bookstore_DRDDiagram.png)
 + 페이지 제작 및 단계별 기능 작동 확인
 <br>
 
