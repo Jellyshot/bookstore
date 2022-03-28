@@ -20,19 +20,21 @@
                 <a href="./manage_order.php">주문관리</a>
             </aside>
             <main>
-                <h1>작가관리 페이지 입니다.</h1>
+                <h1>거래처관리 페이지 입니다.</h1>
                 <div class="n_buttons">
                 <a href="../author/aut_insert.php">작가추가</a>
                 </div>
                 <table>
-                    <th>출판사코드</th>
-                    <th>출판사명</th>
-                    <th>담당자</th>
-                    <th>연락처</th>
-                    <th>주소</th>
-                    <th>계좌번호</th>
-                    <th>결제일</th>
-                    <th colspan="2">관리</th>
+                <th>거래처코드</th>
+                <th>거래처명</th>
+                <th>담당자명</th>
+                <th>담당자 연락처</th>
+                <th>담당자 이메일</th>
+                <th>거래처 주소</th>
+                <th>계좌번호</th>
+                <th>대금지불일</th>
+                <th colspan="2">관리</th>
+        
                 
         <?php
             $sql="SELECT * FROM publisher
@@ -52,7 +54,7 @@
                     <td><?=$row['pbs_account']?></td>
                     <td><?=$row['pbs_pdate']?></td>
                     <td><a href="../publisher/pbs_update.php?pbs_code=<?=$row['pbs_code']?>">수정</a></td>
-                    <td><a href="../publisher/pbs_deleteProcess.php?pbs_code=<?=$row['aut_code']?>">삭제</a></td>
+                    <td><a href="../publisher/pbs_deleteProcess.php?pbs_code=<?=$row['pbs_code']?>">삭제</a></td>
                 </tr>     
         <?php        
             }

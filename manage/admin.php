@@ -45,9 +45,22 @@
         <a href="./manage_order.php">주문관리</a>
     </aside>
     <main>
+
+
+
         <h1>도서관리 페이지 입니다.</h1>
-        <div class="n_buttons">
-        <a href="../book/book_write.php">도서추가</a>
+        <div class="n_buttons" style="display: flex; justify-content: space-between;" >
+        <a href="../book/book_write.php" style="float: left;">도서추가</a>
+        <!-- 5. 개별로 찾아 수정을 하기 위한 검색창 -->
+        <form action="./admin_result.php" method="GET" class="search_box" style="margin: 0;">
+            <select name="s_ctg">
+                <option value="book_name">책이름</option>
+                <option value="aut_name">작가명</option>
+                <option value="pbs_name">출판사명</option>
+            </select>
+            <input type="text" placeholder="검색어를 입력하세요" name="search">
+            <input type="submit" value="&#xf002;"/><br>
+        </form>
         </div>
         <table>
             <th style="width: 150px; height:auto">도서표지</th>
@@ -108,19 +121,8 @@
         echo "<a href='admin.php?page_no=".$total_pages."'>Last</a>";
     }
 ?>
-<!-- 5. 개별로 찾아 수정을 하기 위한 검색창 -->
     </div>
-    <div class="search_result_container">
-    <form action="./book_searchResult.php" method="GET" class="search_box">
-        <select name="s_ctg">
-            <option value="book_name">책이름</option>
-            <option value="aut_name">작가명</option>
-            <option value="pbs_name">출판사명</option>
-        </select>
-        <input type="text" placeholder="검색어를 입력하세요" name="search">
-        <input type="submit" value="&#xf002;"/><br>
-    </form>
-    </div>
+
     </main>
 
 <?php

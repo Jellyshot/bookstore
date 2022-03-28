@@ -43,8 +43,18 @@
     </aside>
     <main>
         <h1>회원관리 페이지 입니다.</h1>
-        <div class="n_buttons">
-        <a href="../membership/mem_regist.php">회원추가</a>
+        <div class="n_buttons" style="display: flex; justify-content: space-between;" >
+        <a href="../membership/mem_regist.php"  style="float: left;">회원추가</a>
+        <!-- 5. 개별로 찾아 수정을 하기 위한 검색창 끙... 이거 또 만드러야댈듯 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ-->
+        <form action="./manage_membersearch.php" method="GET" class="search_box" style="margin: 0;">
+            <select name="s_ctg">
+                <option value="mem_id">회원아이디</option>
+                <option value="mem_name">회원이름</option>
+                <option value="mem_phone">연락처</option>
+            </select>
+            <input type="text" placeholder="검색어를 입력하세요" name="search">
+            <input type="submit" value="&#xf002;"/><br>
+        </form>
         </div>
         <table>
             <th>회원아이디</th>
@@ -69,7 +79,7 @@
     while ($row = $result->fetch_array()) {
 ?>      <tr>
             <td><?=$row['mem_id']?></td>
-            <td><img src="<?=$upload_path?><?=$row['mem_profile']?>" alt="이미지 준비중"></td>
+            <td><img src="<?=$upload_path?><?=$row['mem_profile']?>" alt="이미지 준비중" style="max-height:160px";></td>
             <td><?=$row['mem_name']?></td>
             <td><?=$row['mem_address']?></td>
             <td><?=$row['mem_phone']?></td>
@@ -95,18 +105,6 @@
         echo "<a href='manage_member.php?page_no=".$total_pages."'>Last</a>";
     }
 ?>
-<!-- 5. 개별로 찾아 수정을 하기 위한 검색창 끙... 이거 또 만드러야댈듯 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ-->
-    </div>
-    <div class="search_result_container">
-    <form action="./book_searchResult.php" method="GET" class="search_box">
-        <select name="s_ctg">
-            <option value="aut_name">작가명</option>
-            <option value="pbs_name">출판사명</option>
-            <option value="book_name">책이름</option>
-        </select>
-        <input type="text" placeholder="검색어를 입력하세요" name="search">
-        <input type="submit" value="&#xf002;"/><br>
-    </form>
     </div>
     </main>
 
