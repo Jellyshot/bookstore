@@ -10,11 +10,11 @@
 ?>  
     <script defer src="../js/wopen.js"></script>
     <aside>
-        <a href="./admin.php">도서관리</a>
-        <a href="./manage_publisher.php">거래처관리</a>
-        <a href="./manage_author.php">작가정보관리</a>
-        <a href="./manage_member.php">회원관리</a>
-        <a href="./manage_order.php">주문관리</a>
+        <a href="../manage/admin.php">도서관리</a>
+        <a href="../manage/manage_publisher.php">거래처관리</a>
+        <a href="../manage/manage_author.php">작가정보관리</a>
+        <a href="../manage/manage_member.php">회원관리</a>
+        <a href="../manage/manage_order.php">주문관리</a>
     </aside>
     <main>
         <h1>도서등록 페이지 입니다.</h1>
@@ -38,18 +38,25 @@
         </select><br>
 
         <!-- 작가 이름으로 코드 검색해오기 -->
-        <input type="text" name="aut_code" id="pInput" placeholder="작가코드">
-        <input type="button" onclick="openChild()" value="작가검색">
-
+        <div style="display:flex;">
+        <input type="text" name="aut_code" id="pInput" placeholder="작가코드" style="float:left; width:80%;">
+        <input type="button" onclick="openChild()" value="작가검색" style="float: left; width:20%; margin:16px;">
+        </div>
         <!-- id 새로 부여해서 js하나 더 만들깅 -->
-        <input type="text" name="pbs_code" id="pInput" placeholder="출판사코드">
-        <input type="button" onclick="openChild2()" value="출판사검색">
+        <div style="display:flex;">
+        <input type="text" name="pbs_code" id="pInput2" placeholder="출판사코드" style="float:left; width:80%;">
+        <input type="button" onclick="openChild2()" value="출판사검색" style="float: left; width:20%; margin:16px;">
+        </div>
 
         <input type="text" name="book_info" placeholder="도서정보">
-        <input type="text" name="book_cost" placeholder="구매단가">
-        <input type="text" name="book_price" placeholder="판매단가">
+
+        <div style="display:flex;justify-content: space-between;">
+        <input type="text" name="book_cost" placeholder="구매단가" style="float:left; width:48%;">
+        <input type="text" name="book_price" placeholder="판매단가" style="float:left; width:48%;">
+        </div>
+        <input type="date" name="book_pdate" placeholder="출간일">
         <input type="file" name="book_upload">
-        <input type="submit" value="등록">
+        <input type="submit" value="등록" style="width:100%;">
         </form>
 
         </div>

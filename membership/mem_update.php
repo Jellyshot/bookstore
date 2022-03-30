@@ -8,7 +8,7 @@
     $stmt = $conn->query($stmt);
     $row = $stmt->fetch_assoc();
 ?>
-<script defer src="../js/join_chk.js"></script>
+
 
     <h1>회원정보 수정</h1>
     <div class="width80">
@@ -19,10 +19,10 @@
             
             <!-- id값을 js에서 다루어야 하기 때문에 id input에 id값을 준다 -->
             <input type="hidden" id="mem_id" name="mem_id" id="mem_id" value="<?= $row['mem_id'] ?>" readonly/><br>
-            <p>비밀번호</p>
+            <!-- <p>비밀번호</p>
             <input type="password" name="mem_pwd" id="mem_pwd" value="<?= $row['mem_pwd'] ?>" required/><br>
             <p>비밀번호 확인</p>
-            <input type="password" name="mem_cpwd" id="mem_cpwd" value="<?= $row['mem_pwd']?>" required/><br>
+            <input type="password" name="mem_cpwd" id="mem_cpwd" value="<?= $row['mem_pwd']?>" required/><br> -->
             <p>이름</p>
             <input type="text" name="mem_name" id="mem_name" value="<?= $row['mem_name'] ?>" required/><br>
             <p>주소</p>
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="r_button">
-            <input type="button" value="수정" onclick="join_chk()"/>
+            <input type="submit" value="수정" />
             <input type="button" value="취소" onclick="history.back()"/>
         </div>
     </form>

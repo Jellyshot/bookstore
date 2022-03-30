@@ -35,9 +35,9 @@
     <script>
         let cl = confirm("장바구니로 이동하시겠습니까?");
         if (cl){
-            location.href="./cart_list.php?cm_code=<?= $cm_code ?>"
+            location.href="./cart_list.php?cm_code=<?= $cm_code ?>";
         }else{
-            location.href="../book/book_datailview.php?=<?=$book_code?>"
+               location.href="../book/book_detailview.php?book_code=<?=$book_code?>";
         }
     </script>
 </body>

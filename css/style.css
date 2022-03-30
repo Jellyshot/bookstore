@@ -96,6 +96,7 @@ header a:hover, .drop_menu:hover button{
     display: block;
 }
 
+
 /* ----------- input submit, button 타입 포인터 --------- */
 input[type=submit], input[type=button]{
     cursor: pointer;

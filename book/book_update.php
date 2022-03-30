@@ -4,63 +4,67 @@
     require '../utility/nav.php';
 
     // 2. 변수 설정
-
+    $book_code = $_GET['book_code'];
     // 3. 화면 구성
     if(isset($_SESSION['mem_id']) && ($_SESSION['mem_id'] != '') && ($_SESSION['mem_id'] == 'admin')) { 
-?>
+        $sql = "SELECT * FROM book WHERE book_code=".$book_code;
+        $resultset = $conn->query($sql);
+        $book = $resultset->fetch_assoc();
+?>  
+    <script defer src="../js/wopen.js"></script>
     <aside>
-        <a href="./admin.php">도서관리</a>
-        <a href="./manage_publisher.php">거래처관리</a>
-        <a href="./manage_author.php">작가정보관리</a>
-        <a href="./manage_member.php">회원관리</a>
-        <a href="./manage_order.php">주문관리</a>
+        <a href="../manage/admin.php">도서관리</a>
+        <a href="../manage/manage_publisher.php">거래처관리</a>
+        <a href="../manage/manage_author.php">작가정보관리</a>
+        <a href="../manage/manage_member.php">회원관리</a>
+        <a href="../manage/manage_order.php">주문관리</a>
     </aside>
     <main>
-        <h1>도서관리 페이지 입니다.</h1>
+        <h1>도서수정 페이지 입니다.</h1>
         <div class="n_buttons">
-        <a href="../book/book_write.php">도서추가</a>
+        <button onclick="history.back()">뒤로가기</button>
         </div>
-        <table>
-            <th style="width: 150px; height:auto">도서표지</th>
-            <th>도서코드</th>
-            <th>도서이름</th>
-            <th>카테고리</th>
-            <th>작가이름</th>
-            <th>출판사명</th>
-            <th>도서정보</th>
-            <th>구매단가</th>
-            <th>판매단가</th>
-            <th>출판일</th>
-            <th colspan="2">관리</th>
-        
-<?php
-    $sql="SELECT book_upload, book_code, book_name, ctg_name, aut_name, pbs_name, book_info, book_cost, book_price, book_pdate FROM book AS b
-        INNER JOIN author AS a ON b.aut_code = a.aut_code
-        INNER JOIN category AS c ON b.ctg_code = c.ctg_code
-        INNER JOIN publisher AS p ON b.pbs_code = p.pbs_code
-        ORDER BY book_code ASC 
-        LIMIT ". $offset." ,". $pagination_length;
-        
-    
-    $result = $conn->query($sql);
-    $upload_path = '../book/book_upload/';
+        <div class="width80">
 
-    while ($row = $result->fetch_array()) {
-?>      <tr>
-            <td><img src="<?=$upload_path?><?=$row['book_upload']?>" alt="이미지 준비중"></td>
-            <td><?=$row['book_code']?></td>
-            <td><?=$row['book_name']?></td>
-            <td><?=$row['ctg_name']?></td>
-            <td><?=$row['aut_name']?></td>
-            <td><?=$row['pbs_name']?></td>
-            <td><?=$row['book_info']?></td>
-            <td><?=$row['book_cost']?></td>
-            <td><?=$row['book_price']?></td>
-            <td><?=$row['book_pdate']?></td>
-            <td><a href="../book/book_update.php?book_code=<?=$row['book_code']?>">수정</a></td>
-            <td><a href="../book/book_deleteProcess.php?book_code=<?=$row['book_code']?>">삭제</a></td>
-        </tr>     
-<?php
-    }
-}
-?>
+        <form action="./book_updateProcess.php" method="POST" class="writeform" enctype="multipart/form-data">
+        <input type="text" name ="book_code" value="<?=$book_code?>" readonly>
+        <input type="text" name="book_name" value="<?=$book['book_name']?>"><br>
+        <label for="ctg_code">카테고리</label>
+        <select name="ctg_code">
+<?php   
+        // 카테고리 테이블의 ctg_code길이만큼 option 이 생성되고 value값이 설정되게 하기. option의 이름에는 ctg_name 값이 들어가도록.
+        $sql = "SELECT * FROM category";
+        $resultset = $conn->query($sql);
+
+        while($row = $resultset->fetch_assoc()){
+?>      
+        <option value="<?=$row['ctg_code']?>"><?=$row['ctg_name']?></option>
+<?php   }  ?>
+        </select><br>
+
+        <!-- 작가 이름으로 코드 검색해오기 -->
+        <div style="display:flex;">
+        <input type="text" name="aut_code" id="pInput" value="<?=$book['aut_code']?>" style="float:left; width:80%;">
+        <input type="button" onclick="openChild()" value="작가검색" style="float: left; width:20%; margin:16px;">
+        </div>
+        <!-- id 새로 부여해서 js하나 더 만들깅 -->
+        <div style="display:flex;">
+        <input type="text" name="pbs_code" id="pInput2" value="<?=$book['pbs_code']?>" style="float:left; width:80%;">
+        <input type="button" onclick="openChild2()" value="출판사검색" style="float: left; width:20%; margin:16px;">
+        </div>
+
+        <input type="text" name="book_info" value="<?=$book['book_info']?>">
+
+        <div style="display:flex;justify-content: space-between;">
+        <input type="text" name="book_cost" value="<?=$book['book_cost']?>" style="float:left; width:48%;">
+        <input type="text" name="book_price" value="<?=$book['book_price']?>" style="float:left; width:48%;">
+        </div>
+        <input type="date" name="book_pdate" value="<?=$book['book_pdate']?>">
+        <input type="file" name="book_upload">
+        <input type="submit" value="등록" style="width:100%;">
+        </form>
+
+        </div>
+    </main>
+<?php } ?>
+        

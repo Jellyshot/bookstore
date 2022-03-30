@@ -73,7 +73,7 @@
         LIMIT ". $offset." ,". $pagination_length;
     
     $result = $conn->query($sql);
-    $upload_path = '../author/a_upload/';
+    $upload_path = '../author/aut_upload/';
 
     while ($row = $result->fetch_array()) {
 ?>      <tr>

@@ -13,7 +13,7 @@
     $offset = ($page_no -1) * $recods_per_page;
 
     $sql = "SELECT count(*) As total_recods FROM membership
-    ORDER BY mem_id desc";
+    ORDER BY mem_rdate desc";
 
     $result = $conn->query($sql);
     $total_recods = $result->fetch_array();
@@ -70,7 +70,7 @@
     // 카테고리 1값만 가져오네;;;뭐지;;;;;;??
     // 1만 가져온게 아니라, ctg_code에 맞춰서 정렬된거였음 ㅠㅠ 앞으로 innner join을 쓰면 꼭 order by 해주자!
     $sql="SELECT * FROM membership
-        ORDER BY mem_id DESC 
+        ORDER BY mem_rdate DESC 
         LIMIT ". $offset." ,". $pagination_length;
     
     $result = $conn->query($sql);

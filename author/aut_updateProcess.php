@@ -30,15 +30,15 @@
                 }
             }//end of move_uploaded file
 
-            $stmt = $conn->prepare("UPDATE author SET aut_name = ?, aut_interview = ?, aut_birth = ?, aut_upload = ?, WHERE aut_code = ?");
+            $stmt = $conn->prepare("UPDATE author SET aut_name = ?, aut_interview = ?, aut_birth = ?, aut_upload = ? WHERE aut_code = ?");
             $stmt->bind_param("sssss", $aut_name, $aut_interview, $aut_birth, $filename, $aut_code);
 
         }else{
-            $stmt = $conn->prepare("UPDATE author SET aut_name = ?, aut_interview = ?, aut_birth = ? ,WHERE aut_code = ?");
+            $stmt = $conn->prepare("UPDATE author SET aut_name = ?, aut_interview = ?, aut_birth = ? WHERE aut_code = ?");
             $stmt->bind_param("ssss", $aut_name, $aut_interview, $aut_birth, $aut_code);
         } //end of isset $_Files 
-        $stmt->execute();
 
+        $stmt->execute();
         $stmt->close();
         $conn->close();
 

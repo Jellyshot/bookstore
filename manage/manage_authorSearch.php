@@ -38,12 +38,12 @@
                 ORDER BY aut_code DESC ";
             
             $result = $conn->query($sql);
-            $upload_path = '../author/a_upload/';
+            $upload_path = '../author/aut_upload/';
         
             while ($row = $result->fetch_array()) {
         ?>      <tr>
                     <td><?=$row['aut_code']?></td>
-                    <td><img src="<?=$upload_path?><?=$row['aut_upload']?>" alt="이미지 준비중"></td>
+                    <td><img src="<?=$upload_path?><?=$row['aut_upload']?>" alt="이미지 준비중" style="height:200px;"></td>
                     <td><?=$row['aut_name']?></td>
                     <td><?=$row['aut_interview']?></td>
                     <td><?=$row['aut_birth']?></td>

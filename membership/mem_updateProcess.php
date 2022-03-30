@@ -9,7 +9,7 @@
 
     $mem_id = $_POST['mem_id'];
     $mem_name = $_POST['mem_name'];
-    $mem_adress = $_POST['mem_address'];
+    $mem_address = $_POST['mem_address'];
     $mem_phone = $_POST['mem_phone'];
     $mem_email = $_POST['mem_email'];
     
@@ -39,19 +39,20 @@
                 }
     }
 
-// 4. 업데이트 처리를 위한 prepared sql 구성 및 bind
-    $stmt = $conn->prepare("UPDATE membership SET mem_name = ?, mem_address = ?, mem_phone = ?, mem_email = ?, mem_profile = ? WHERE mem_id = ?" );
-    $stmt->bind_param("ssssss", $mem_name, $mem_address, $mem_phone, $mem_email, $filename, $mem_id);
-}else { 
-// 업로드 된 파일이 없을 때 업데이트 처리를 위한 prepared sql 구성 및 bind param
-$stmt = $conn->prepare("UPDATE membership SET mem_name = ?, mem_address = ?, mem_phone = ?, mem_email = ? WHERE mem_id = ?" );
-$stmt->bind_param("sssss", $mem_name, $mem_address, $mem_phone, $mem_email, $mem_id);
-}
-$stmt->execute();
+    // 4. 업데이트 처리를 위한 prepared sql 구성 및 bind
+        $stmt = $conn->prepare("UPDATE membership SET mem_name = ?, mem_address = ?, mem_phone = ?, mem_email = ?, mem_profile = ? WHERE mem_id = ?" );
+        $stmt->bind_param("ssssss", $mem_name, $mem_address, $mem_phone, $mem_email, $filename, $mem_id);
 
-// 5. 리소스 반납
-    $conn->close();  
-    $stmt->close();
+    }else { 
+    // 업로드 된 파일이 없을 때 업데이트 처리를 위한 prepared sql 구성 및 bind param
+    $stmt = $conn->prepare("UPDATE membership SET mem_name = ?, mem_address = ?, mem_phone = ?, mem_email = ? WHERE mem_id = ?" );
+    $stmt->bind_param("sssss", $mem_name, $mem_address, $mem_phone, $mem_email, $mem_id);
+    }
+    $stmt->execute();
+
+    // 5. 리소스 반납
+        $conn->close();  
+        $stmt->close();
 
     echo outmsg(UPDATE_SUCCESS);
     header('Location: ./mypage.php');

@@ -30,7 +30,7 @@ if (isset($_POST['pbs_search'])) {
                 while ($row = $result->fetch_assoc()) {
                 ?> <tr>
                         <td>
-							<input type="radio"  id="cInput2" name="pbs_code" value="<?= $row['pbs_code'] ?>">
+                                <input type="radio"  id="cInput2" name="pbs_code" value="<?= $row['pbs_code'] ?>">
                         </td>
                         <td><?= $row['pbs_name'] ?></td>
                         </tr>

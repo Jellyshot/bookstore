@@ -82,7 +82,7 @@
         INNER JOIN author AS a ON b.aut_code = a.aut_code
         INNER JOIN category AS c ON b.ctg_code = c.ctg_code
         INNER JOIN publisher AS p ON b.pbs_code = p.pbs_code
-        ORDER BY book_code ASC 
+        ORDER BY book_code DESC 
         LIMIT ". $offset." ,". $pagination_length;
         
     

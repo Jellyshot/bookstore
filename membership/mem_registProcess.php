@@ -11,7 +11,7 @@
     $mem_pwd = $_POST['mem_pwd'];
     $mem_cpwd = $_POST['mem_cpwd'];
     $mem_name = $_POST['mem_name'];
-    $mem_adress = $_POST['mem_address'];
+    $mem_address = $_POST['mem_address'];
     $mem_phone = $_POST['mem_phone'];
     $mem_email = $_POST['mem_email'];
     $upload_path = './profile/';
